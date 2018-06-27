@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+h1 {
+    text-align: center;
+}
+
+.emphasis {
+	color: blue;
+	font-weight: bold;
+}
+
+.error {
+	color: red;
+	font-style: italic;
+}
+
+.info {
+	color: navy;
+	font-size: small;
+}
+
+.app-info {
+    background-color: beige;
+}
+
+.ships {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.ship {
+    flex: 1 0 40%;
+    max-height: 100vh;
+    min-width: 250px;
+    margin: 1rem;
+    border: 2px solid forestgreen;
+    border-radius: 5px;
+    overflow-y: scroll;
+}
+
+.aircraft-loading-size {
+    display: inline-block;
+    width: 2rem;
+}
+
+.aircraft-selector-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.aircraft-nobonus-checker-container {
+    white-space: nowrap;
+}
+
+.mastery-mode-container {
+    border: 1px lightgray solid;
+}

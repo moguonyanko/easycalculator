@@ -1,0 +1,483 @@
+{
+	"rp": {
+		"name": "烈風",
+		"type": "KS",
+		"ack": 10
+	},
+	"rp601": {
+		"name": "烈風(六○一空)",
+		"type": "KS",
+		"ack": 11
+	},
+	"rpk": {
+		"name": "烈風改",
+		"type": "KS",
+		"ack": 12
+	},
+	"z53i": {
+		"name": "零式艦戦53型(岩本隊)",
+		"type": "KS",
+		"ack": 12
+	},
+	"z62i": {
+		"name": "零式艦戦62型(岩井隊)",
+		"type": "KB",
+		"ack": 7
+	},
+	"f4u1d": {
+		"name": "F4U-1D",
+		"type": "KB",
+		"ack": 7
+	},
+	"fm2": {
+		"name": "FM-2",
+		"type": "KB",
+		"ack": 6
+	},
+	"fw": {
+		"name": "Fw190T改",
+		"type": "KS",
+		"ack": 10
+	},
+	"ms": {
+		"name": "Bf109T改",
+		"type": "KS",
+		"ack": 8
+	},
+	"z21j": {
+		"name": "零式艦戦21型(熟練)",
+		"type": "KS",
+		"ack": 8
+	},
+	"z32j": {
+		"name": "零式艦戦32型(熟練)",
+		"type": "KS",
+		"ack": 8
+	},
+	"z52j": {
+		"name": "零式艦戦52型(熟練)",
+		"type": "KS",
+		"ack": 9
+	},
+	"z52h601": {
+		"name": "零式艦戦52型丙(六○一空)",
+		"type": "KS",
+		"ack": 9
+	},
+	"z62": {
+		"name": "零式艦戦62型(爆戦)",
+		"type": "KB",
+		"ack": 4
+	},
+	"z63": {
+		"name": "零式艦戦63型(爆戦)",
+		"type": "KB",
+		"ack": 5
+	},
+	"sd2": {
+		"name": "紫電改二",
+		"type": "KS",
+		"ack": 9
+	},
+	"sd4": {
+		"name": "紫電改四",
+		"type": "KS",
+		"ack": 10
+	},
+	"zu": {
+		"name": "瑞雲",
+		"type": "SB",
+		"ack": 2
+	},
+	"zu634": {
+		"name": "瑞雲(六三四空)",
+		"type": "SB",
+		"ack": 2
+	},
+	"zu634j": {
+		"name": "瑞雲(六三四空/熟練)",
+		"type": "SB",
+		"ack": 4
+	},
+	"zu12": {
+		"name": "瑞雲12型",
+		"type": "SB",
+		"ack": 3
+	},
+	"zu12_634": {
+		"name": "瑞雲12型(六三四空)",
+		"type": "SB",
+		"ack": 3
+	},
+	"sr": {
+		"name": "試製晴嵐",
+		"type": "SB",
+		"ack": 0
+	},
+	"zu631": {
+		"name": "瑞雲(六三一空)",
+		"type": "SB",
+		"ack": 1
+	},
+	"sr631": {
+		"name": "晴嵐(六三一空)",
+		"type": "SB",
+		"ack": 0
+	},
+	"late298b": {
+		"name": "Late 298B",
+		"type": "SB",
+		"ack": 1
+	},
+	"nzn": {
+		"name": "試製南山",
+		"type": "KB",
+		"ack": 1
+	},
+	"ns": {
+		"name": "二式水戦改",
+		"type": "SS",
+		"ack": 3
+	},
+	"nsj": {
+		"name": "二式水戦改(熟練)",
+		"type": "SS",
+		"ack": 5
+	},
+	"kyohuk": {
+		"name": "強風改",
+		"type": "SS",
+		"ack": 5
+	},
+	"rs": {
+		"name": "Ro.44水上戦闘機",
+		"type": "SS",
+		"ack": 2
+	},
+	"rsb": {
+		"name": "Ro.44水上戦闘機bis",
+		"type": "SS",
+		"ack": 3
+	},
+	"99e": {
+		"name": "九九式艦爆(江草隊)",
+		"type": "KB",
+		"ack": 0
+	},
+	"sse": {
+		"name": "彗星(江草隊)",
+		"type": "KB",
+		"ack": 1
+	},
+	"ss601": {
+		"name": "彗星(六○一空)",
+		"type": "KB",
+		"ack": 0
+	},
+	"ss22634": {
+		"name": "彗星二二型(六三四空)",
+		"type": "KB",
+		"ack": 1
+	},
+	"ss22634j": {
+		"name": "彗星二二型(六三四空/熟練)",
+		"type": "KB",
+		"ack": 2
+	},
+	"97kkt": {
+		"name": "九七式艦攻(友永隊)",
+		"type": "KK",
+		"ack": 1
+	},
+	"tzt": {
+		"name": "天山一二型(友永隊)",
+		"type": "KK",
+		"ack": 1
+	},
+	"tzm": {
+		"name": "天山一二型(村田隊)",
+		"type": "KK",
+		"ack": 1
+	},
+	"rs601": {
+		"name": "流星(六○一空)",
+		"type": "KK",
+		"ack": 0
+	},
+	"rsk": {
+		"name": "流星改",
+		"type": "KK",
+		"ack": 0
+	},
+	"97kk931": {
+		"name": "九七式艦攻(九三一空)",
+		"type": "KK",
+		"ack": 0
+	},
+	"tz931": {
+		"name": "天山(九三一空)",
+		"type": "KK",
+		"ack": 0
+	},
+	"tbf": {
+		"name": "TBF",
+		"type": "KK",
+		"ack": 1
+	},
+	"tbm3d": {
+		"name": "TBM-3D",
+		"type": "KK",
+		"ack": 1
+	},
+	"shinden": {
+		"name": "震電改",
+		"type": "KS",
+		"ack": 15
+	},
+	"re2001or": {
+		"name": "Re.2001 OR改",
+		"type": "KS",
+		"ack": 6
+	},
+	"re2001g": {
+		"name": "Re.2001 G改",
+		"type": "KK",
+		"ack": 4
+	},
+	"re2005": {
+		"name": "Re.2005 改",
+		"type": "KS",
+		"ack": 11
+	},
+	"kikkakai": {
+		"name": "橘花改",
+		"type": "HB",
+		"ack": 12
+	},
+	"keiunkai": {
+		"name": "噴式景雲改",
+		"type": "HB",
+		"ack": 6
+	},
+	"99kbj": {
+		"name": "九九式艦爆(熟練)",
+		"type": "KB",
+		"ack": 1
+	},
+	"sbd": {
+		"name": "SBD",
+		"type": "KB",
+		"ack": 2
+	},
+	"f4f3": {
+		"name": "F4F-3",
+		"type": "KS",
+		"ack": 4
+	},
+	"f4f4": {
+		"name": "F4F-4",
+		"type": "KS",
+		"ack": 5
+	},
+	"f6f3": {
+		"name": "F6F-3",
+		"type": "KS",
+		"ack": 8
+	},
+	"f6f3n": {
+		"name": "F6F-3N",
+		"type": "KS",
+		"ack": 8
+	},
+	"f6f5": {
+		"name": "F6F-5",
+		"type": "KS",
+		"ack": 10
+	},
+	"f6f5n": {
+		"name": "F6F-5N",
+		"type": "KS",
+		"ack": 10
+	},
+	"seafire3k": {
+		"name": "Seafire Mk.III改",
+		"type": "KS",
+		"ack": 9
+	},
+    "hayabusa64": {
+		"name": "一式戦 隼Ⅱ型(64戦隊)",
+		"type": "RS",
+		"ack": 11,
+        "intercept": 5,
+        "antibomb": 1
+    },
+    "hayabusa54": {
+		"name": "一式戦 隼Ⅲ型甲(54戦隊)",
+		"type": "RS",
+		"ack": 8,
+        "intercept": 3,
+        "antibomb": 1
+    },
+    "hayabusa_2": {
+		"name": "一式戦 隼Ⅱ型",
+		"type": "RS",
+		"ack": 6,
+        "intercept": 2
+    },
+    "hayabusa_2": {
+		"name": "一式戦 隼Ⅲ型甲",
+		"type": "RS",
+		"ack": 7,
+        "intercept": 3,
+        "antibomb": 1
+    },
+    "hien244": {
+		"name": "三式戦 飛燕(飛行244戦隊)",
+		"type": "RS",
+		"ack": 9,
+        "intercept": 4,
+        "antibomb": 3
+    },
+    "hien1t": {
+		"name": "三式戦 飛燕一型丁",
+		"type": "RS",
+		"ack": 9,
+        "intercept": 3,
+        "antibomb": 2
+    },
+    "hien": {
+		"name": "三式戦 飛燕",
+		"type": "RS",
+		"ack": 8,
+        "intercept": 3,
+        "antibomb": 1
+    },
+    "hayate": {
+		"name": "四式戦 疾風",
+		"type": "RS",
+		"ack": 10,
+        "intercept": 1,
+        "antibomb": 1
+    },
+    "raiden": {
+		"name": "雷電",
+		"type": "KYS",
+		"ack": 6,
+        "intercept": 2,
+        "antibomb": 5
+    },
+    "siden11": {
+		"name": "紫電一一型",
+		"type": "KYS",
+		"ack": 8,
+        "intercept": 1,
+        "antibomb": 1
+    },
+    "siden21sidenkai": {
+		"name": "紫電二一型 紫電改",
+		"type": "KYS",
+		"ack": 9,
+        "intercept": 3,
+        "antibomb": 1
+    },
+    "sidenkai343s301": {
+		"name": "紫電改(三四三空)戦闘301",
+		"type": "KYS",
+		"ack": 11,
+        "intercept": 4,
+        "antibomb": 2
+    },
+    "spitfire1": {
+		"name": "Spitfire Mk.I",
+		"type": "RS",
+		"ack": 9,
+        "intercept": 1,
+        "antibomb": 2
+    },
+    "spitfire5": {
+		"name": "Spitfire Mk.V",
+		"type": "RS",
+		"ack": 9,
+        "intercept": 2,
+        "antibomb": 3
+    },
+    "spitfire9j": {
+		"name": "Spitfire Mk.IX(熟練)",
+		"type": "RS",
+		"ack": 10,
+        "intercept": 4,
+        "antibomb": 2
+    },
+    "rikko96": {
+		"name": "九六式陸攻",
+		"type": "RK",
+		"ack": 1
+    },
+    "rikko1": {
+		"name": "一式陸攻",
+		"type": "RK",
+		"ack": 2
+    },
+    "rikko1_22k": {
+		"name": "一式陸攻二二型甲",
+		"type": "RK",
+		"ack": 3
+    },
+    "rikko1_34": {
+		"name": "一式陸攻三四型",
+		"type": "RK",
+		"ack": 4
+    },
+    "rikko1_nonaka": {
+		"name": "一式陸攻(野中隊)",
+		"type": "RK",
+		"ack": 3
+    },
+    "ginga": {
+		"name": "銀河",
+		"type": "RK",
+		"ack": 3
+    },
+    "hayabusa55": {
+		"name": "爆装一式戦 隼Ⅲ型改(55戦隊)",
+		"type": "RK",
+		"ack": 6
+    },
+    "taiteichan": {
+		"name": "二式大艇",
+		"type": "ST",
+        "search": 12
+    },
+    "catarina": {
+		"name": "PBY-5A Catalina",
+		"type": "ST",
+        "search": 9
+    },
+    "saiun": {
+		"name": "彩雲",
+		"type": "KT",
+        "search": 9
+    },
+    "saiuncl": {
+		"name": "彩雲(東カロリン空)",
+		"type": "KT",
+        "search": 10
+    },
+    "keiunkt": {
+		"name": "試製景雲(艦偵型)",
+		"type": "KT",
+        "search": 11
+    },
+    "saiuntei4": {
+		"name": "彩雲(偵四)",
+		"type": "KT",
+        "ack": 2,
+        "search": 10
+    },
+    "nisikikantei": {
+		"name": "二式艦上偵察機",
+		"type": "KT",
+        "ack": 1,
+        "search": 7
+    }
+}

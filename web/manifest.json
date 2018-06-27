@@ -1,0 +1,25 @@
+{
+    "short_name": "Easy Calculator",
+    "name": "Easy Calculator of command the air",
+    "icons": [
+        {
+            "src": "images/home.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "images/home.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "images/home.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ],
+    "start_url": "index.html",
+    "background_color": "#ccff99",
+    "display": "standalone",
+    "theme_color": "#ccffcc"
+}

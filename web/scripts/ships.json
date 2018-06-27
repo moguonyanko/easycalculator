@@ -1,0 +1,358 @@
+{
+	"ag": {
+		"name": "赤城改",
+		"slotComposition": [20, 20, 32, 10]
+	},
+	"kg": {
+		"name": "加賀改",
+		"slotComposition": [20, 20, 46, 12]
+	},
+	"sr": {
+		"name": "蒼龍改",
+		"slotComposition": [18, 27, 18, 10]
+	},
+	"sr2": {
+		"name": "蒼龍改二",
+		"slotComposition": [18, 35, 20, 6]
+	},
+	"hr": {
+		"name": "飛龍改",
+		"slotComposition": [18, 27, 18, 10]
+	},
+	"hr2": {
+		"name": "飛龍改二",
+		"slotComposition": [18, 36, 22, 3]
+	},
+	"sk": {
+		"name": "翔鶴",
+		"slotComposition": [21, 21, 21, 12]
+	},
+	"skk": {
+		"name": "翔鶴改",
+		"slotComposition": [24, 24, 24, 12]
+	},
+	"sk2": {
+		"name": "翔鶴改二",
+		"slotComposition": [27, 27, 27, 12]
+	},
+	"sk2k": {
+		"name": "翔鶴改二甲",
+		"slotComposition": [34, 21, 12, 9]
+	},
+	"zk": {
+		"name": "瑞鶴",
+		"slotComposition": [21, 21, 21, 12]
+	},
+	"zkk": {
+		"name": "瑞鶴改",
+		"slotComposition": [24, 24, 24, 12]
+	},
+	"zk2": {
+		"name": "瑞鶴改二",
+		"slotComposition": [28, 26, 26, 13]
+	},
+	"zk2k": {
+		"name": "瑞鶴改二甲",
+		"slotComposition": [34, 24, 12, 6]
+	},
+	"hs": {
+		"name": "鳳翔改",
+		"slotComposition": [14, 16, 12]
+	},
+	"th": {
+		"name": "大鳳改",
+		"slotComposition": [30, 24, 24, 8]
+	},
+	"ur": {
+		"name": "雲龍改",
+		"slotComposition": [18, 21, 27, 3]
+	},
+	"amg": {
+		"name": "天城改",
+		"slotComposition": [18, 21, 27, 3]
+	},
+	"ktg": {
+		"name": "葛城改",
+		"slotComposition": [18, 21, 27, 3]
+	},
+	"sh": {
+		"name": "祥鳳改",
+		"slotComposition": [18, 12, 12, 6]
+	},
+	"zh": {
+		"name": "瑞鳳改",
+		"slotComposition": [18, 12, 12, 6]
+	},
+	"zh2": {
+		"name": "瑞鳳改二",
+		"slotComposition": [21, 18, 12, 6]
+	},
+	"zh2o": {
+		"name": "瑞鳳改二乙",
+		"slotComposition": [18, 15, 15, 2]
+	},
+	"rh": {
+		"name": "龍鳳改",
+		"slotComposition": [21, 9, 9, 6]
+	},
+	"hy": {
+		"name": "飛鷹改",
+		"slotComposition": [18, 18, 18, 12]
+	},
+	"jy2": {
+		"name": "隼鷹改二",
+		"slotComposition": [24, 18, 20, 4]
+	},
+	"cht2": {
+		"name": "千歳航改二",
+		"slotComposition": [24, 16, 11, 8]
+	},
+	"chy2": {
+		"name": "千代田航改二",
+		"slotComposition": [24, 16, 11, 8]
+	},
+	"rj2": {
+		"name": "龍驤改二",
+		"slotComposition": [18, 28, 6, 3]
+	},
+	"gz": {
+		"name": "グラーフ・ツェッペリン改",
+		"slotComposition": [30, 13, 10, 3]
+	},
+	"ty2": {
+		"name": "大鷹改二",
+		"slotComposition": [14, 14, 8, 3]
+	},
+	"aks": {
+		"name": "秋津洲改",
+		"slotComposition": [1, 1, 1]
+	},
+	"akm": {
+		"name": "あきつ丸",
+		"slotComposition": [8, 8, 8]
+	},
+	"i400": {
+		"name": "伊400改",
+		"slotComposition": [3, 3]
+	},
+	"i401": {
+		"name": "伊401改",
+		"slotComposition": [3, 3]
+	},
+	"i58": {
+		"name": "伊58改",
+		"slotComposition": [1, 1]
+	},
+	"i19": {
+		"name": "伊19改",
+		"slotComposition": [1, 1]
+	},
+	"i8": {
+		"name": "伊8改",
+		"slotComposition": [1, 1]
+	},
+	"i26": {
+		"name": "伊26改",
+		"slotComposition": [1, 1]
+	},
+	"i13": {
+		"name": "伊13改",
+		"slotComposition": [2, 1, 0]
+	},
+	"i14": {
+		"name": "伊14改",
+		"slotComposition": [2, 1, 0]
+	},
+	"hys": {
+		"name": "速吸改",
+		"slotComposition": [6, 3, 1]
+	},
+	"aqla": {
+		"name": "Aquila改",
+		"slotComposition": [15, 26, 15, 10]
+	},
+	"mgm": {
+		"name": "最上改",
+		"slotComposition": [5, 6, 5, 11]
+	},
+	"mkm": {
+		"name": "三隈改",
+		"slotComposition": [5, 6, 5, 8]
+	},
+	"szy": {
+		"name": "鈴谷改",
+		"slotComposition": [5, 6, 5, 6]
+	},
+	"szy2": {
+		"name": "鈴谷改二",
+		"slotComposition": [3, 3, 7, 11]
+	},
+	"szyk2": {
+		"name": "鈴谷航改二",
+		"slotComposition": [15, 12, 12, 8]
+	},
+	"kmn": {
+		"name": "熊野改",
+		"slotComposition": [5, 6, 5, 6]
+	},
+	"kmn2": {
+		"name": "熊野改二",
+		"slotComposition": [3, 3, 7, 11]
+	},
+	"kmnk2": {
+		"name": "熊野航改二",
+		"slotComposition": [15, 12, 12, 8]
+	},
+	"tone": {
+		"name": "利根改二",
+		"slotComposition": [2, 2, 9, 5]
+	},
+	"ckm": {
+		"name": "筑摩改二",
+		"slotComposition": [2, 2, 9, 5]
+	},
+	"ise": {
+		"name": "伊勢改",
+		"slotComposition": [11, 11, 11, 14]
+	},
+	"ise2": {
+		"name": "伊勢改二",
+		"slotComposition": [2, 2, 22, 22, 9]
+	},
+	"hyga": {
+		"name": "日向改",
+		"slotComposition": [11, 11, 11, 14]
+	},
+	"fuso": {
+		"name": "扶桑改二",
+		"slotComposition": [4, 4, 9, 23]
+	},
+	"ymsr": {
+		"name": "山城改二",
+		"slotComposition": [4, 4, 9, 23]
+	},
+	"ctsk": {
+		"name": "千歳甲",
+		"slotComposition": [12, 6, 6]
+	},
+	"cydk": {
+		"name": "千代田甲",
+		"slotComposition": [12, 6, 6]
+	},
+	"mzh": {
+		"name": "瑞穂改",
+		"slotComposition": [12, 12, 6]
+	},
+	"kmikb": {
+		"name": "神威改母",
+		"slotComposition": [1, 1, 1]
+	},
+	"ymt": {
+		"name": "大和改",
+		"slotComposition": [7, 7, 7, 7]
+	},
+	"mss": {
+		"name": "武蔵改",
+		"slotComposition": [7, 7, 7, 7]
+	},
+	"mss2": {
+		"name": "武蔵改二",
+		"slotComposition": [5, 5, 5, 8, 5]
+	},
+	"ngt": {
+		"name": "長門改",
+		"slotComposition": [3, 3, 3, 3]
+	},
+	"ngt2": {
+		"name": "長門改二",
+		"slotComposition": [3, 3, 6, 3]
+	},
+	"mtu": {
+		"name": "陸奥改",
+		"slotComposition": [3, 3, 3, 3]
+	},
+	"yura2": {
+		"name": "由良改二",
+		"slotComposition": [1, 2, 1]
+	},
+	"tama2": {
+		"name": "多摩改二",
+		"slotComposition": [1, 1, 1]
+	},
+	"aganok": {
+		"name": "阿賀野改",
+		"slotComposition": [2, 2, 2]
+	},
+	"noshirok": {
+		"name": "能代改",
+		"slotComposition": [2, 2, 2]
+	},
+	"yahagik": {
+		"name": "矢矧改",
+		"slotComposition": [2, 2, 2]
+	},
+	"sakawak": {
+		"name": "酒匂改",
+		"slotComposition": [2, 2, 2]
+	},
+	"itla": {
+		"name": "Italia",
+		"slotComposition": [3, 3, 3, 3]
+	},
+	"roma": {
+		"name": "Roma改",
+		"slotComposition": [3, 3, 3, 3]
+	},
+	"zara": {
+		"name": "Zara改",
+		"slotComposition": [2, 2, 2, 2]
+	},
+	"zaradue": {
+		"name": "Zara due",
+		"slotComposition": [6, 3, 3, 3]
+	},
+	"pola": {
+		"name": "Pola改",
+		"slotComposition": [2, 2, 2, 2]
+	},
+	"cmdtest": {
+		"name": "CommandanTest改",
+		"slotComposition": [12, 12, 7, 7]
+	},
+	"sara": {
+		"name": "Saratoga改",
+		"slotComposition": [36, 18, 18, 18]
+	},
+	"sara2": {
+		"name": "Saratoga Mk.II",
+		"slotComposition": [32, 24, 18, 6]
+	},
+	"sara2m2": {
+		"name": "Saratoga Mk.II Mod.2",
+		"slotComposition": [37, 24, 19, 13]
+	},
+	"arkk": {
+		"name": "Ark Royal改",
+		"slotComposition": [24, 30, 12, 12]
+	},
+	"gbk": {
+		"name": "Gambier Bay改",
+		"slotComposition": [16, 12, 6]
+	},
+	"intpd": {
+		"name": "Intrepid",
+		"slotComposition": [37, 36, 19, 4]
+	},
+	"intpdk": {
+		"name": "Intrepid改",
+		"slotComposition": [40, 36, 21, 15]
+	},
+    "ab_case1": {
+		"name": "基地航空隊(戦闘機・攻撃機)",
+		"slotComposition": [18, 18, 18, 18]
+    },
+    "ab_case2": {
+		"name": "基地航空隊(偵察機・戦闘機・攻撃機)",
+		"slotComposition": [4, 18, 18, 18]
+    }
+}

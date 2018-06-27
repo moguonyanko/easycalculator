@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>簡易計算機</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-title" content="簡易計算機アプリ" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="styles/easycalculator.css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="images/home.png" />    
+  </head>
+  <body>
+    <header>
+      <h1>簡易計算機</h1>
+    </header>
+    <main>
+      <div class="result">
+        <div class="mastery-mode-container">
+          <p>制空モード</p>
+          <label><input class="mastery-mode" type="radio" name="mastery-mode" value="sortie" checked />出撃</label>
+          <label><input class="mastery-mode" type="radio" name="mastery-mode" value="airDefence" />防空</label>
+        </div>
+        <div class="installer">
+          <button class="app-installer">インストール</button>
+          <button class="app-uninstaller">アンインストール</button>
+          <p class="app-info"></p>
+        </div>
+        <div>
+          <button class="calculator">計算</button>
+          <span>値=</span><span class="emphasis result-area">0</span>
+        </div>
+      </div>
+      <div class="ships">
+        <!--
+        <ship-config></ship-config>
+        <ship-config></ship-config>
+        <ship-config></ship-config>
+        <ship-config></ship-config>
+        <ship-config></ship-config>
+        <ship-config></ship-config>
+        <ship-config></ship-config>
+        <ship-config></ship-config>
+        -->
+        <div class="ship">
+          <label><input class="enable-ship-data" type="checkbox" checked />計算に含める</label>
+          <div class="ship-selector-container">
+            <select class="ship-selector">
+              <option selected label="未選択">未選択</option>
+            </select>
+          </div>
+        </div>
+        <div class="ship">
+          <label><input class="enable-ship-data" type="checkbox" checked />計算に含める</label>
+          <div class="ship-selector-container">
+            <select class="ship-selector">
+              <option selected label="未選択">未選択</option>
+            </select>
+          </div>
+        </div>
+        <div class="ship">
+          <label><input class="enable-ship-data" type="checkbox" checked />計算に含める</label>
+          <div class="ship-selector-container">
+            <select class="ship-selector">
+              <option selected label="未選択">未選択</option>
+            </select>
+          </div>
+        </div>
+        <div class="ship">
+          <label><input class="enable-ship-data" type="checkbox" checked />計算に含める</label>
+          <div class="ship-selector-container">
+            <select class="ship-selector">
+              <option selected label="未選択">未選択</option>
+            </select>
+          </div>
+        </div>
+        <div class="ship">
+          <label><input class="enable-ship-data" type="checkbox" checked />計算に含める</label>
+          <div class="ship-selector-container">
+            <select class="ship-selector">
+              <option selected label="未選択">未選択</option>
+            </select>
+          </div>
+        </div>
+        <div class="ship">
+          <label><input class="enable-ship-data" type="checkbox" checked />計算に含める</label>
+          <div class="ship-selector-container">
+            <select class="ship-selector">
+              <option selected label="未選択">未選択</option>
+            </select>
+          </div>
+        </div>
+        <div class="ship">
+          <label><input class="enable-ship-data" type="checkbox" checked />計算に含める</label>
+          <div class="ship-selector-container">
+            <select class="ship-selector">
+              <option selected label="未選択">未選択</option>
+            </select>
+          </div>
+        </div>
+        <div class="ship">
+          <label><input class="enable-ship-data" type="checkbox" checked />計算に含める</label>
+          <div class="ship-selector-container">
+            <select class="ship-selector">
+              <option selected label="未選択">未選択</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </main>
+    <template class="ship-template">
+      <div class="ship">
+        <label><input class="enable-ship-data" type="checkbox" checked />計算に含める</label>
+        <div class="ship-selector-container">
+          <select class="ship-selector">
+            <option selected label="未選択">未選択</option>
+          </select>
+        </div>
+      </div>
+    </template>
+    <script src="scripts/index.js" type="module"></script>
+  </body>
+</html>
