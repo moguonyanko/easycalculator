@@ -4,6 +4,10 @@ h1 {
     text-align: center;
 }
 
+select {
+    font-size: 16px; /* モバイルデバイスでタッチされた時に拡大されるのを防ぐ。 */
+}
+
 .emphasis {
 	color: blue;
 	font-weight: bold;

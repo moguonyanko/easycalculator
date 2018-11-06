@@ -3,12 +3,12 @@
     "name": "Easy Calculator of command the air",
     "icons": [
         {
-            "src": "images/home.png",
+            "src": "images/home_small.png",
             "type": "image/png",
             "sizes": "48x48"
         },
         {
-            "src": "images/home.png",
+            "src": "images/home_small.png",
             "type": "image/png",
             "sizes": "96x96"
         },
