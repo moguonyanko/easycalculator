@@ -123,6 +123,10 @@
 		"name": "大鷹改二",
 		"slotComposition": [14, 14, 8, 3]
 	},
+	"sy2": {
+		"name": "神鷹改二",
+		"slotComposition": [9, 18, 18, 6]
+	},
 	"aks": {
 		"name": "秋津洲改",
 		"slotComposition": [1, 1, 1]
@@ -346,6 +350,14 @@
 	"intpdk": {
 		"name": "Intrepid改",
 		"slotComposition": [40, 36, 21, 15]
+	},
+	"Gotland": {
+		"name": "Gotland",
+		"slotComposition": [2, 3, 6]
+	},
+	"Gotlandk": {
+		"name": "Gotland改",
+		"slotComposition": [1, 1, 1, 1]
 	},
     "ab_case1": {
 		"name": "基地航空隊(戦闘機・攻撃機)",
