@@ -19,7 +19,9 @@ const CACHE_KEY = `${CONTEXT_NAME}-${VERSION}`;
 const targetResources = [
     APP_ROOT,
     `${APP_ROOT}index.html`,
-    `${APP_ROOT}images/home.png`,
+    `${APP_ROOT}home.png`,
+    `${APP_ROOT}home_small.png`,
+    `${APP_ROOT}launch.png`,
     `${APP_ROOT}styles/easycalculator.css`,
     `${APP_ROOT}scripts/index.js`,
     `${APP_ROOT}scripts/easycalculator.js`,

@@ -1,21 +1,16 @@
 {
-    "short_name": "Easy Calculator",
-    "name": "Easy Calculator of command the air",
+    "short_name": "制空権",
+    "name": "制空値計算システム",
     "icons": [
         {
-            "src": "images/home_small.png",
+            "src": "/home_small.png",
             "type": "image/png",
-            "sizes": "48x48"
+            "sizes": "57x57"
         },
         {
-            "src": "images/home_small.png",
+            "src": "/home.png",
             "type": "image/png",
-            "sizes": "96x96"
-        },
-        {
-            "src": "images/home.png",
-            "type": "image/png",
-            "sizes": "192x192"
+            "sizes": "180x180"
         }
     ],
     "start_url": "index.html",
