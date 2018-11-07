@@ -2,7 +2,7 @@
  * @fileOverview EasyCalculator用のServiceWorkerスクリプト
  */
 
-const VERSION = "0.111";
+const VERSION = "0.112";
 const CONTEXT_NAME = "easycalculator";
 const APP_ROOT = `/${CONTEXT_NAME}/`;
 const CACHE_KEY = `${CONTEXT_NAME}-${VERSION}`;

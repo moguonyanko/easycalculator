@@ -4,10 +4,6 @@ h1 {
     text-align: center;
 }
 
-select {
-    font-size: 16px; /* モバイルデバイスでタッチされた時に拡大されるのを防ぐ。 */
-}
-
 .emphasis {
 	color: blue;
 	font-weight: bold;
@@ -27,13 +23,17 @@ select {
     background-color: beige;
 }
 
+.mastery-mode-container {
+    border: 1px lightgray solid;
+}
+
 .ships {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
 }
 
-.ship {
+.ships ship-config {
     flex: 1 0 40%;
     max-height: 100vh;
     min-width: 250px;
@@ -41,22 +41,4 @@ select {
     border: 2px solid forestgreen;
     border-radius: 5px;
     overflow-y: scroll;
-}
-
-.aircraft-loading-size {
-    display: inline-block;
-    width: 2rem;
-}
-
-.aircraft-selector-container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.aircraft-nobonus-checker-container {
-    white-space: nowrap;
-}
-
-.mastery-mode-container {
-    border: 1px lightgray solid;
 }

@@ -4,7 +4,7 @@ const win = window,
     doc = document;
 
 const selectAllShipElements = opt_doc => {
-    const shipEles = (opt_doc || doc).querySelectorAll(".ships .ship");
+    const shipEles = (opt_doc || doc).querySelectorAll("ship-config");
     return shipEles;
 };
 
@@ -197,12 +197,7 @@ const appendAircraftSelectors = (ship, selectBase) => {
         aircraftBase.appendChild(aircraftSelector);
     }
 
-    const base = selectBase.querySelector(`.${baseClassName}`);
-    if (base) {
-        selectBase.replaceChild(aircraftBase, base);
-    } else {
-        selectBase.appendChild(aircraftBase);
-    }
+    selectBase.aircraftBase = aircraftBase;
 };
 
 const selectedShips = ((() => {
@@ -238,14 +233,14 @@ const findSelectedShip = (shipIdx, shipName) => {
 
 const appendShip = (shipName, selectBase, idx) => {
     const shipEle = new Option(shipName, shipName);
-    const shipSel = selectBase.querySelector(".ship-selector");
+    const shipSel = selectBase.shipSelector;
     shipSel.appendChild(shipEle);
     shipSel.addEventListener("change", evt => {
         const value = evt.target.value;
         const ship = EC.getShip(value);
         appendAircraftSelectors(ship, selectBase);
         saveSelectedShip(idx, ship);
-    }, false);
+    });
 };
 
 const appendAllShips = () => {
@@ -257,7 +252,7 @@ const appendAllShips = () => {
 };
 
 const getSelectedShip = (selectBase, idx) => {
-    const shipSel = selectBase.querySelector(".ship-selector");
+    const shipSel = selectBase.shipSelector;
     return findSelectedShip(idx, shipSel.value);
 };
 
@@ -268,8 +263,8 @@ const getSelectedShip = (selectBase, idx) => {
 const getTargetShipFlags = () => {
     const shipEles = selectAllShipElements();
     const flags = Array.from(shipEles).map((shipEle, index) => {
-        const checked = shipEle.querySelector(".enable-ship-data").checked;
-        const fn = ele => ele.querySelector(".ship-selector").value;
+        const checked = shipEle.includeShipData;
+        const fn = ele => ele.shipSelector.value;
         const value = fn(shipEle);
         return checked && value && (value !== "未選択");
     });
@@ -415,6 +410,28 @@ class ShipElement extends HTMLElement {
         const template = doc.querySelector(".ship-template");
         const shadow = this.attachShadow({mode: "open"});
         shadow.appendChild(template.content.cloneNode(true));
+    }
+    
+    get shipSelector() {
+        return this.shadowRoot.querySelector(".ship-selector");
+    }
+    
+    get ship() {
+        return this.shadowRoot.querySelector(".ship");
+    }
+    
+    set aircraftBase(newBase) {
+        const oldBase = this.ship.querySelector(`.${newBase.className}`);
+        if (oldBase) {
+            // TODO: ship-selectorのchangeイベントであまりにも多く呼び出されている。
+            this.ship.replaceChild(newBase, oldBase);
+        } else {
+            this.ship.appendChild(newBase);
+        }
+    }
+    
+    get includeShipData() {
+        return this.shadowRoot.querySelector(".enable-ship-data").checked;
     }
 }
 
