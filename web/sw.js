@@ -23,6 +23,7 @@ const targetResources = [
     `${APP_ROOT}home_small.png`,
     `${APP_ROOT}launch.png`,
     `${APP_ROOT}styles/easycalculator.css`,
+    `${APP_ROOT}styles/customelements.css`,
     `${APP_ROOT}scripts/index.js`,
     `${APP_ROOT}scripts/easycalculator.js`,
     `${APP_ROOT}scripts/aircrafts.json`,
