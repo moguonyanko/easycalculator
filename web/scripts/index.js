@@ -5,7 +5,7 @@ const win = window,
 
 const selectAllShipElements = opt_doc => {
     const shipEles = (opt_doc || doc).querySelectorAll("ship-config");
-    return shipEles;
+    return Array.from(shipEles);
 };
 
 const appendAircraft = (aircraftSelector, acName) => {
@@ -14,7 +14,7 @@ const appendAircraft = (aircraftSelector, acName) => {
 };
 
 const appendAllAircrafts = aircraftSelector => {
-    [...Object.keys(EC.AIRCRAFTS_FACTORY)].forEach(acName => {
+    Object.keys(EC.AIRCRAFTS_FACTORY).forEach(acName => {
         appendAircraft(aircraftSelector, acName);
     });
 };
@@ -203,7 +203,7 @@ const appendAircraftSelectors = (ship, selectBase) => {
 const selectedShips = ((() => {
     let selShips = {};
 
-    [...selectAllShipElements()].forEach((selectBase, idx) => {
+    selectAllShipElements().forEach((selectBase, idx) => {
         selShips[idx] = {};
     });
 
@@ -235,8 +235,13 @@ const appendShip = (shipName, selectBase, idx) => {
     const shipEle = new Option(shipName, shipName);
     const shipSel = selectBase.shipSelector;
     shipSel.appendChild(shipEle);
-    shipSel.addEventListener("change", evt => {
-        const value = evt.target.value;
+    shipSel.addEventListener("change", event => {
+        // TODO: イベントリスナが選択可能な艦の数だけ登録されてしまっている。
+        // stopImmediatePropagationを呼び出すことでほかのイベントリスナ呼び出しを
+        // 強制的に止めている。イベントリスナを不必要に登録しないようにすれば
+        // stopImmediatePropagationの呼び出しは要らなくなるはずである。
+        event.stopImmediatePropagation();
+        const value = event.target.value;
         const ship = EC.getShip(value);
         appendAircraftSelectors(ship, selectBase);
         saveSelectedShip(idx, ship);
@@ -244,8 +249,8 @@ const appendShip = (shipName, selectBase, idx) => {
 };
 
 const appendAllShips = () => {
-    [...selectAllShipElements()].forEach((selectBase, idx) => {
-        [...EC.getShipNames()].forEach(shipName => {
+    selectAllShipElements().forEach((selectBase, idx) => {
+        EC.getShipNames().forEach(shipName => {
             appendShip(shipName, selectBase, idx);
         });
     });
@@ -262,7 +267,7 @@ const getSelectedShip = (selectBase, idx) => {
  */
 const getTargetShipFlags = () => {
     const shipEles = selectAllShipElements();
-    const flags = Array.from(shipEles).map((shipEle, index) => {
+    const flags = shipEles.map((shipEle, index) => {
         const checked = shipEle.includeShipData;
         const fn = ele => ele.shipSelector.value;
         const value = fn(shipEle);
@@ -273,7 +278,7 @@ const getTargetShipFlags = () => {
 
 const getAllSelectedShips = () => {
     const shipEles = selectAllShipElements();
-    return [...shipEles].map((selectBase, idx) => {
+    return shipEles.map((selectBase, idx) => {
         return getSelectedShip(selectBase, idx);
     });
 };
@@ -423,7 +428,7 @@ class ShipElement extends HTMLElement {
     set aircraftBase(newBase) {
         const oldBase = this.ship.querySelector(`.${newBase.className}`);
         if (oldBase) {
-            // TODO: ship-selectorのchangeイベントであまりにも多く呼び出されている。
+            //console.log("call");
             this.ship.replaceChild(newBase, oldBase);
         } else {
             this.ship.appendChild(newBase);
