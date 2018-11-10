@@ -3,12 +3,12 @@
     "name": "制空値計算システム",
     "icons": [
         {
-            "src": "/home_small.png",
+            "src": "home_small.png",
             "type": "image/png",
             "sizes": "57x57"
         },
         {
-            "src": "/home.png",
+            "src": "home.png",
             "type": "image/png",
             "sizes": "180x180"
         }
