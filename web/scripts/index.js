@@ -3,6 +3,8 @@ import EC from "./easycalculator.js";
 const win = window, 
     doc = document;
 
+const MAX_SHIP_SIZE = 10;
+
 const selectAllShipElements = opt_doc => {
     const shipEles = (opt_doc || doc).querySelectorAll("ship-config");
     return Array.from(shipEles);
@@ -231,22 +233,24 @@ const findSelectedShip = (shipIdx, shipName) => {
     }
 };
 
-const appendAllShips = () => {
-    selectAllShipElements().forEach((selectBase, idx) => {
-        const shipSel = EC.getShipNames()
-            .map(shipName => new Option(shipName, shipName))
-            .reduce((shipSelector, shipOption) => {
-                shipSelector.appendChild(shipOption);
-                return shipSelector;
-            }, selectBase.shipSelector);
-            
-        shipSel.addEventListener("change", event => {
-            const value = event.target.value;
-            const ship = EC.getShip(value);
-            appendAircraftSelectors(ship, selectBase);
-            saveSelectedShip(idx, ship);
-        });
+const appendShip = (selectBase, idx = selectAllShipElements().length - 1) => {
+    const shipSel = EC.getShipNames()
+        .map(shipName => new Option(shipName, shipName))
+        .reduce((shipSelector, shipOption) => {
+            shipSelector.appendChild(shipOption);
+            return shipSelector;
+        }, selectBase.shipSelector);
+
+    shipSel.addEventListener("change", event => {
+        const value = event.target.value;
+        const ship = EC.getShip(value);
+        appendAircraftSelectors(ship, selectBase);
+        saveSelectedShip(idx, ship);
     });
+};
+
+const appendAllShips = () => {
+    selectAllShipElements().forEach(appendShip);
 };
 
 const getSelectedShip = (selectBase, idx) => {
@@ -284,29 +288,46 @@ const getSelectedMasteryModeName = () => {
     return checkedValues[0];
 };
 
-/**
- * TODO: イベントリスナーまでコピーできていない。
- */
 const appendNewShip = () => {
-    const shipEle = doc.querySelector(".ship");
-    const newShipEle = shipEle.cloneNode(true);
+    if (MAX_SHIP_SIZE <= selectAllShipElements().length) {
+        return;
+    }
+    const newShipEle = doc.createElement("ship-config");
     const container = doc.querySelector(".ships");
     container.appendChild(newShipEle);
+    appendShip(newShipEle);
+};
+
+const calculateMastery = () => {
+    const allShips = getAllSelectedShips();
+    const flags = getTargetShipFlags();
+    const targetShips = allShips.filter((ship, index) => flags[index]);
+    const mode = getSelectedMasteryModeName();
+    const masteries = [...targetShips].map(ship => ship.getMastery(mode));
+    const result = masteries.reduce((m1, m2) => m1 + m2, 0);
+    const resultArea = doc.querySelector(".result .result-area");
+    resultArea.innerText = result;
+};
+
+const addListener = () => {
+    doc.querySelector(".controler").addEventListener("click", event => {
+        const classList = event.target.classList;
+        if (classList.contains("action")) {
+            event.stopPropagation();
+            if (classList.contains("calculator")) {
+                calculateMastery();
+            } else if (classList.contains("addship")) {
+                appendNewShip();
+            } else {
+                // Does nothing
+            }
+        }
+    });
 };
 
 const initPage = () => {
     appendAllShips();
-
-    doc.querySelector(".calculator").addEventListener("click", evt => {
-        const allShips = getAllSelectedShips();
-        const flags = getTargetShipFlags();
-        const targetShips = allShips.filter((ship, index) => flags[index]);
-        const mode = getSelectedMasteryModeName();
-        const masteries = [...targetShips].map(ship => ship.getMastery(mode));
-        const result = masteries.reduce((m1, m2) => m1 + m2, 0);
-        const resultArea = doc.querySelector(".result .result-area");
-        resultArea.innerText = result;
-    });
+    addListener();
 };
 
 const reportError = err => {
