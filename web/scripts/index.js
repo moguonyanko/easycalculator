@@ -231,27 +231,20 @@ const findSelectedShip = (shipIdx, shipName) => {
     }
 };
 
-const appendShip = (shipName, selectBase, idx) => {
-    const shipEle = new Option(shipName, shipName);
-    const shipSel = selectBase.shipSelector;
-    shipSel.appendChild(shipEle);
-    shipSel.addEventListener("change", event => {
-        // TODO: イベントリスナが選択可能な艦の数だけ登録されてしまっている。
-        // stopImmediatePropagationを呼び出すことでほかのイベントリスナ呼び出しを
-        // 強制的に止めている。イベントリスナを不必要に登録しないようにすれば
-        // stopImmediatePropagationの呼び出しは要らなくなるはずである。
-        event.stopImmediatePropagation();
-        const value = event.target.value;
-        const ship = EC.getShip(value);
-        appendAircraftSelectors(ship, selectBase);
-        saveSelectedShip(idx, ship);
-    });
-};
-
 const appendAllShips = () => {
     selectAllShipElements().forEach((selectBase, idx) => {
-        EC.getShipNames().forEach(shipName => {
-            appendShip(shipName, selectBase, idx);
+        const shipSel = EC.getShipNames()
+            .map(shipName => new Option(shipName, shipName))
+            .reduce((shipSelector, shipOption) => {
+                shipSelector.appendChild(shipOption);
+                return shipSelector;
+            }, selectBase.shipSelector);
+            
+        shipSel.addEventListener("change", event => {
+            const value = event.target.value;
+            const ship = EC.getShip(value);
+            appendAircraftSelectors(ship, selectBase);
+            saveSelectedShip(idx, ship);
         });
     });
 };
@@ -428,7 +421,7 @@ class ShipElement extends HTMLElement {
     set aircraftBase(newBase) {
         const oldBase = this.ship.querySelector(`.${newBase.className}`);
         if (oldBase) {
-            //console.log("call");
+            console.info("Old aircraft base is replaced");
             this.ship.replaceChild(newBase, oldBase);
         } else {
             this.ship.appendChild(newBase);
