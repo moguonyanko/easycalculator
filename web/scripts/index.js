@@ -225,6 +225,12 @@ const saveSelectedShip = (shipIdx, ship) => {
     }
 };
 
+// TODO: 実装中
+// 削除後に制空値の計算が正しくなくなることがある。
+const deleteSelectedShips = shipIdx => {
+    delete selectedShips[shipIdx];
+};
+
 const findSelectedShip = (shipIdx, shipName) => {
     if (shipIdx in selectedShips) {
         return selectedShips[shipIdx][shipName] || new EC.NoNameShip();
@@ -233,7 +239,10 @@ const findSelectedShip = (shipIdx, shipName) => {
     }
 };
 
+// TODO: インデックスをselectedShipsのキーにしているため要素の削除が難しくなっている。
 const appendShip = (selectBase, idx = selectAllShipElements().length - 1) => {
+    selectBase.shipIndex = idx;
+    
     const shipSel = EC.getShipNames()
         .map(shipName => new Option(shipName, shipName))
         .reduce((shipSelector, shipOption) => {
@@ -245,7 +254,7 @@ const appendShip = (selectBase, idx = selectAllShipElements().length - 1) => {
         const value = event.target.value;
         const ship = EC.getShip(value);
         appendAircraftSelectors(ship, selectBase);
-        saveSelectedShip(idx, ship);
+        saveSelectedShip(selectBase.shipIndex, ship);
     });
 };
 
@@ -429,6 +438,29 @@ class ShipElement extends HTMLElement {
         const template = doc.querySelector(".ship-template");
         const shadow = this.attachShadow({mode: "open"});
         shadow.appendChild(template.content.cloneNode(true));
+    }
+    
+    connectedCallback() {
+        this.shadowRoot.addEventListener("click", e => {
+            if (e.target.classList.contains("action")) {
+                e.stopPropagation();
+                if (e.target.classList.contains("delete-ship-data")) {
+                    deleteSelectedShips(this.shipIndex);
+                    this.parentNode.removeChild(this);
+                }
+            }
+        });
+    }
+    
+    set shipIndex(idx) {
+        if (isNaN(parseInt(idx))) {
+            throw new Error(`${idx} is not number`);
+        }
+        this.index = idx;
+    }
+    
+    get shipIndex() {
+        return this.index;
     }
     
     get shipSelector() {
