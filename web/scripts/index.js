@@ -3,7 +3,7 @@ import EC from "./easycalculator.js";
 const win = window, 
     doc = document;
 
-const MAX_SHIP_SIZE = 10;
+const MAX_SHIP_SIZE = 12;
 
 const selectAllShipElements = opt_doc => {
     const shipEles = (opt_doc || doc).querySelectorAll("ship-config");
@@ -205,8 +205,8 @@ const appendAircraftSelectors = (ship, selectBase) => {
 const selectedShips = ((() => {
     let selShips = {};
 
-    selectAllShipElements().forEach((selectBase, idx) => {
-        selShips[idx] = {};
+    selectAllShipElements().forEach(selectBase => {
+        selShips[selectBase.shipIndex] = {};
     });
 
     return selShips;
@@ -225,8 +225,6 @@ const saveSelectedShip = (shipIdx, ship) => {
     }
 };
 
-// TODO: 実装中
-// 削除後に制空値の計算が正しくなくなることがある。
 const deleteSelectedShips = shipIdx => {
     delete selectedShips[shipIdx];
 };
@@ -239,10 +237,7 @@ const findSelectedShip = (shipIdx, shipName) => {
     }
 };
 
-// TODO: インデックスをselectedShipsのキーにしているため要素の削除が難しくなっている。
-const appendShip = (selectBase, idx = selectAllShipElements().length - 1) => {
-    selectBase.shipIndex = idx;
-    
+const appendShip = selectBase => {
     const shipSel = EC.getShipNames()
         .map(shipName => new Option(shipName, shipName))
         .reduce((shipSelector, shipOption) => {
@@ -262,9 +257,9 @@ const appendAllShips = () => {
     selectAllShipElements().forEach(appendShip);
 };
 
-const getSelectedShip = (selectBase, idx) => {
+const getSelectedShip = selectBase => {
     const shipSel = selectBase.shipSelector;
-    return findSelectedShip(idx, shipSel.value);
+    return findSelectedShip(selectBase.shipIndex, shipSel.value);
 };
 
 /**
@@ -273,21 +268,15 @@ const getSelectedShip = (selectBase, idx) => {
  */
 const getTargetShipFlags = () => {
     const shipEles = selectAllShipElements();
-    const flags = shipEles.map((shipEle, index) => {
+    const flags = shipEles.map(shipEle => {
         const checked = shipEle.includeShipData;
-        const fn = ele => ele.shipSelector.value;
-        const value = fn(shipEle);
+        const value = shipEle.shipSelector.value;
         return checked && value && (value !== "未選択");
     });
     return flags;
 };
 
-const getAllSelectedShips = () => {
-    const shipEles = selectAllShipElements();
-    return shipEles.map((selectBase, idx) => {
-        return getSelectedShip(selectBase, idx);
-    });
-};
+const getAllSelectedShips = () => selectAllShipElements().map(getSelectedShip);
 
 const getSelectedMasteryModeName = () => {
     const modeEles = doc.querySelectorAll(".mastery-mode");
@@ -431,9 +420,13 @@ const setUpMaker = (config, maker) => {
     }
 };
 
+let shipCount = 0;
+
 class ShipElement extends HTMLElement {
     constructor() {
         super();
+        
+        this.index = shipCount++;
         
         const template = doc.querySelector(".ship-template");
         const shadow = this.attachShadow({mode: "open"});
