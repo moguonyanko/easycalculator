@@ -420,13 +420,13 @@ const setUpMaker = (config, maker) => {
     }
 };
 
-let shipCount = 0;
+let shipElementIndex = 0;
 
 class ShipElement extends HTMLElement {
     constructor() {
         super();
         
-        this.index = shipCount++;
+        this.index = shipElementIndex++;
         
         const template = doc.querySelector(".ship-template");
         const shadow = this.attachShadow({mode: "open"});
@@ -482,7 +482,6 @@ class ShipElement extends HTMLElement {
 const init = async () => {
     customElements.define("ship-config", ShipElement);
     
-    //EC.test.testCalculateMastery();
     setupServiceWorkerListener();
 
     try {
@@ -496,7 +495,7 @@ const init = async () => {
     }
 };
 
-win.addEventListener("DOMContentLoaded", async () => await init());
+win.addEventListener("DOMContentLoaded", init);
 // Promise関連のエラーの取りこぼしを防ぐためのコード
 win.addEventListener("rejectionhandled", e => console.error(e));
 win.addEventListener("unhandledrejection", e => console.error(e));

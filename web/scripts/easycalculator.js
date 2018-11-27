@@ -530,10 +530,7 @@ const easycalculator = {
     IMPROVEMENT_VALUES,
     setShipMaker,
     setAircraftMaker,
-    NoNameShip,
-    test: {
-        testCalculateMastery
-    }
+    NoNameShip
 };
 
 export default easycalculator;
