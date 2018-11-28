@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>簡易計算機</title>
+    <meta name="description" content="制空値を計算するアプリケーションです" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="apple-mobile-web-app-title" content="簡易計算機" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -13,7 +14,7 @@
     <link rel="apple-touch-startup-image" href="launch.png" />
     <link rel="apple-touch-icon" href="home_small.png" />    
     <link rel="apple-touch-icon" href="home_small.png" sizes="57x57" />    
-    <link rel="apple-touch-icon" href="home.png" sizes="180x180" />    
+    <link rel="apple-touch-icon" href="home.png" sizes="192x192" />    
   </head>
   <body>
     <header>
@@ -52,9 +53,11 @@
         <label><input class="enable-ship-data" type="checkbox" checked />計算に含める</label>
         <button class="delete-ship-data action">削除</button>
         <div class="ship-selector-container">
-          <select class="ship-selector">
-            <option selected label="未選択">未選択</option>
-          </select>
+          <label title="艦艇選択">
+            <select class="ship-selector">
+              <option selected label="未選択">未選択</option>
+            </select>
+          </label>
         </div>
       </div>
     </template>

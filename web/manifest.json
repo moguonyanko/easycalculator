@@ -10,7 +10,7 @@
         {
             "src": "home.png",
             "type": "image/png",
-            "sizes": "180x180"
+            "sizes": "192x192"
         }
     ],
     "start_url": "index.html",
