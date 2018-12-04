@@ -24,7 +24,8 @@ const AIRCRAFT_TYPE_NAMES = {
     KYS: "kyokusen", //局地戦闘機
     RK: "rikko", //陸上攻撃機
     KT: "kantei", //艦上偵察機
-    ST: "suitei" //水上偵察機
+    ST: "suitei", //水上偵察機
+    RT: "rikutei" //陸上偵察機
 };
 
 class AircraftType {
@@ -54,7 +55,8 @@ const AIRCRAFT_TYPES = {
     [AIRCRAFT_TYPE_NAMES.KYS]: new AircraftType(AIRCRAFT_TYPE_NAMES.KYS, 25),
     [AIRCRAFT_TYPE_NAMES.RK]: new AircraftType(AIRCRAFT_TYPE_NAMES.RK, 3, true),
     [AIRCRAFT_TYPE_NAMES.KT]: new AircraftType(AIRCRAFT_TYPE_NAMES.KT, 3, true),
-    [AIRCRAFT_TYPE_NAMES.ST]: new AircraftType(AIRCRAFT_TYPE_NAMES.ST, 3, true)
+    [AIRCRAFT_TYPE_NAMES.ST]: new AircraftType(AIRCRAFT_TYPE_NAMES.ST, 3, true),
+    [AIRCRAFT_TYPE_NAMES.RT]: new AircraftType(AIRCRAFT_TYPE_NAMES.RT, 3, true)
 };
 
 /**
@@ -72,18 +74,22 @@ const CORRECTION_VALUES = {
     [AIRCRAFT_TYPE_NAMES.RS]: 0.2
 };
 
+const getRevisionOfScouting = aircraft => {
+  if (aircraft.search >= 9) {
+    return 1.3;
+  } else {
+    return 1.2;
+  }
+};
+
 /**
  * 防空時の偵察機補正
  */
 const getScoutingRevision = {
     // 艦上偵察機
-    [AIRCRAFT_TYPE_NAMES.KT] (aircraft) {
-        if (aircraft.search >= 9) {
-            return 1.3;
-        } else {
-            return 1.2;
-        }
-    },
+    [AIRCRAFT_TYPE_NAMES.KT]: getRevisionOfScouting,
+    // 陸上偵察機
+    [AIRCRAFT_TYPE_NAMES.RT]: getRevisionOfScouting,
     // 水上偵察機・大型飛行艇
     [AIRCRAFT_TYPE_NAMES.ST] (aircraft) {
         if (aircraft.search >= 9) {

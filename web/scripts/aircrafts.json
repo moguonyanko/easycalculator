@@ -184,6 +184,16 @@
 		"type": "KB",
 		"ack": 2
 	},
+	"sutuka2": {
+		"name": "Ju87C改二(KMX搭載機)",
+		"type": "KB",
+		"ack": 0
+	},
+	"sutuka2j": {
+		"name": "Ju87C改二(KMX搭載機/熟練)",
+		"type": "KB",
+		"ack": 0
+	},
 	"97kkt": {
 		"name": "九七式艦攻(友永隊)",
 		"type": "KK",
@@ -211,6 +221,11 @@
 	},
 	"97kk931": {
 		"name": "九七式艦攻(九三一空)",
+		"type": "KK",
+		"ack": 0
+	},
+	"97kk931j": {
+		"name": "九七式艦攻(九三一空/熟練)",
 		"type": "KK",
 		"ack": 0
 	},
@@ -479,5 +494,11 @@
 		"type": "KT",
         "ack": 1,
         "search": 7
+    },
+    "nisikirikutei": {
+		"name": "二式陸上偵察機",
+		"type": "RT",
+        "ack": 3,
+        "search": 8
     }
 }
