@@ -141,8 +141,8 @@ const testCases = {
       const page = await getPage({browser, url});
       const main = await page.$('main');
       const actual = await page.evaluate(mainEle => {
-        // evaluateの内側から外側の変数や定数を参照することはできない。
-        // もちろん関数も参照することもできない。
+        // evaluateの内側から外側の変数や定数を参照することはできない。関数も参照できないので
+        // 共通の処理をevaluateの外側にまとめることができない。
         const shipName = '赤城改';
         const slotNo = 3;
         const acName = '烈風';
@@ -187,13 +187,12 @@ const testCases = {
       const name = `赤城改の第3スロットに熟練度maxの烈風を積んだ時の制空値は ${expected} である`;
 
       const page = await getPage({browser, url});
-      const main = await page.$('main');
-      const actual = await page.evaluate(mainEle => {
+      const actual = await page.$eval('main', main => {
         const shipName = '赤城改';
         const slotNo = 3;
         const acName = '烈風';
 
-        const root = mainEle.querySelector('.ships ship-config:first-of-type')
+        const root = main.querySelector('.ships ship-config:first-of-type')
             .shadowRoot;
 
         // 艦艇リストから赤城改を選択するイベントを発生させる。
@@ -225,11 +224,53 @@ const testCases = {
         impEle.dispatchEvent(impEvent);
 
         // 制空値計算実行
-        mainEle.querySelector('.calculator').click();
+        main.querySelector('.calculator').click();
         // ページに出力された制空値取得
-        return mainEle.querySelector('.result-area').innerText;
-      }, main);
+        return main.querySelector('.result-area').innerText;
+      });
 
+      if (actual === expected) {
+        resolve({name, actual});
+      } else {
+        reject(new UnitTestError({name, expected, actual}));
+      }
+    });
+  },
+  testAddNewShipConfigElement( {browser, url}) {
+    return new Promise(async (resolve, reject) => {
+      const initialSize = 6; // TODO: 現在のdocumentから取得したい。
+      const expected = initialSize + 1;
+      const name = `追加ボタンを1回クリックするとship-configが ${expected} 個になる`;
+
+      const page = await getPage({browser, url});
+      const actual = await page.$eval('main', main => {
+        const addEle = main.querySelector('.addship');
+        addEle.click();
+        return main.querySelectorAll('ship-config').length;
+      });
+      if (actual === expected) {
+        resolve({name, actual});
+      } else {
+        reject(new UnitTestError({name, expected, actual}));
+      }
+    });
+  },
+  testNotAddShipConfigElementIfReachedLimit( {browser, url}) {
+    return new Promise(async (resolve, reject) => {
+      const expected = 12;
+      const name = `追加ボタンをクリックし続けてもship-configは ${expected} 個までしか増えない`;
+
+      const page = await getPage({browser, url});
+      const actual = await page.$eval('main', main => {
+        const clickCount = 15; // クリック回数はexpectedより多い適当な数
+        const addEle = main.querySelector('.addship');
+        for (let current = 0; current < clickCount; current++) {
+          addEle.click();
+        }
+        // clickCountを引数に渡す呼び方ではclickイベントが1回しか発生しない。
+        //addEle.click({clickCount});
+        return main.querySelectorAll('ship-config').length;
+      });
       if (actual === expected) {
         resolve({name, actual});
       } else {
