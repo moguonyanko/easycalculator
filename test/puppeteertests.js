@@ -374,7 +374,7 @@ const main = async () => {
 }
 
 const PuppeteerTests = {
-  run: () => {
+  run() {
     main().then();
   }
 };

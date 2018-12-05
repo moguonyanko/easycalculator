@@ -80,7 +80,7 @@ const main = async () => {
 };
 
 const CDPTests = {
-    run: () => {
+    run() {
         main().then();
     }
 }; 
