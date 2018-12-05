@@ -277,6 +277,30 @@ const testCases = {
         reject(new UnitTestError({name, expected, actual}));
       }
     });
+  },
+  testRemoveShipConfigElement({browser, url}) {
+    return new Promise(async (resolve, reject) => {
+      const name = '削除ボタンをクリックされたship-configはドキュメントから削除される';
+      
+      const page = await getPage({browser, url});
+      const expected = null;
+      const actual = await page.$eval('main', main => {
+        const selector = '.ships ship-config:first-of-type';
+        const testId = 'targetShipConfig';
+        const shipConfig = main.querySelector(selector);
+        const root = shipConfig.shadowRoot;
+        shipConfig.setAttribute('id', testId);
+        const removeEle = root.querySelector('.delete-ship-data');
+        removeEle.click();
+        // ドキュメントから削除されていればnull
+        return main.querySelector(`#${testId}`);
+      });
+      if (actual === expected) {
+        resolve({name, actual});
+      } else {
+        reject(new UnitTestError({name, expected, actual}));
+      }
+    });
   }
 };
 
