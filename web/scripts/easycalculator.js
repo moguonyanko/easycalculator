@@ -74,31 +74,52 @@ const CORRECTION_VALUES = {
     [AIRCRAFT_TYPE_NAMES.RS]: 0.2
 };
 
-const getRevisionOfScouting = aircraft => {
-  if (aircraft.search >= 9) {
-    return 1.3;
-  } else {
-    return 1.2;
-  }
-};
-
 /**
- * 防空時の偵察機補正
+ * 偵察機補正関数群
+ * TODO: 複雑化してきたので整理したい。
  */
-const getScoutingRevision = {
+const scoutingRevisionFuncs = {
     // 艦上偵察機
-    [AIRCRAFT_TYPE_NAMES.KT]: getRevisionOfScouting,
-    // 陸上偵察機
-    [AIRCRAFT_TYPE_NAMES.RT]: getRevisionOfScouting,
-    // 水上偵察機・大型飛行艇
-    [AIRCRAFT_TYPE_NAMES.ST] (aircraft) {
+    [AIRCRAFT_TYPE_NAMES.KT] (aircraft, mode) {
+      if (mode === MASTERYMODE.SOTRIE) {
+        return 1;
+      } else if (mode === MASTERYMODE.AIRDEFENCE) {
         if (aircraft.search >= 9) {
-            return 1.16;
-        } else if (aircraft.search >= 8) {
-            return 1.13;
+          return 1.3;
         } else {
-            return 1.1;
+          return 1.2;
         }
+      }
+      return 1;
+    },
+    // 陸上偵察機
+    [AIRCRAFT_TYPE_NAMES.RT] (aircraft, mode) {
+      if (mode === MASTERYMODE.SOTRIE) {
+        if (aircraft.search >= 9) {
+          return 1.18;
+        } else {
+          return 1.15;
+        }
+      } else if (mode === MASTERYMODE.AIRDEFENCE) {
+        // 今のところ防空時の陸偵補正は索敵値によらず一律同値としている。
+        return 1.18;
+      }
+      return 1;
+    },
+    // 水上偵察機・大型飛行艇
+    [AIRCRAFT_TYPE_NAMES.ST] (aircraft, mode) {
+      if (mode === MASTERYMODE.SOTRIE) {
+        return 1;
+      } else if (mode === MASTERYMODE.AIRDEFENCE) {
+        if (aircraft.search >= 9) {
+          return 1.16;
+        } else if (aircraft.search >= 8) {
+          return 1.13;
+        } else {
+          return 1.1;
+        }
+      }
+      return 1;
     }
 };
 
@@ -124,14 +145,14 @@ class Aircraft {
      * Parameter Context Matchingのデフォルト値を[]や{}の右辺に書くことができる。
      */
     constructor( {
-    name,
-        type,
-        ack = 0, //対空
-        intercept = 0, //迎撃
-        antibomb = 0, //対爆
-        search = 0, //索敵
-        skill = 7, //内部熟練度
-        improvement = IMPROVEMENT_VALUES.DEFAULT } = {}) {
+      name,
+      type,
+      ack = 0, //対空
+      intercept = 0, //迎撃
+      antibomb = 0, //対爆
+      search = 0, //索敵
+      skill = 7, //内部熟練度
+      improvement = IMPROVEMENT_VALUES.DEFAULT } = {}) {
         this.name = name;
         this.type = type;
         this.ack = ack;
@@ -193,6 +214,7 @@ const setAircraftMaker = acData => {
             ack: acData.ack,
             intercept: acData.intercept,
             antibomb: acData.antibomb,
+            search: acData.search,
             skill: acData.skill,
             improvement: acData.improvement
         });
@@ -359,7 +381,8 @@ class Ship {
             }
             const typeName = slot.aircraft.type.name;
             return typeName === AIRCRAFT_TYPE_NAMES.KT ||
-                typeName === AIRCRAFT_TYPE_NAMES.ST;
+                typeName === AIRCRAFT_TYPE_NAMES.ST || 
+                typeName === AIRCRAFT_TYPE_NAMES.RT;
         };
 
         return Array.from(this.slots.values())
@@ -373,16 +396,14 @@ class Ship {
 
         let result = [...masteries].reduce((a, b) => a + b);
 
-        if (mode === MASTERYMODE.AIRDEFENCE) {
-            const searchAcs = this.getSearchAircrafts();
-            searchAcs.forEach(ac => {
-                const revFunc = getScoutingRevision[ac.type.name];
-                if (typeof revFunc === "function") {
-                    const revision = revFunc(ac);
-                    result *= revision;
-                }
-            });
-        }
+        const searchAcs = this.getSearchAircrafts();
+        searchAcs.forEach(ac => {
+          const revFunc = scoutingRevisionFuncs[ac.type.name];
+          if (typeof revFunc === "function") {
+            const revision = revFunc(ac, mode);
+            result *= revision;
+          }
+        });
 
         return parseInt(result);
     }

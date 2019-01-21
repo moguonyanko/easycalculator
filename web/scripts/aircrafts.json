@@ -500,5 +500,11 @@
 		"type": "RT",
         "ack": 3,
         "search": 8
+    },
+    "nisikirikuteij": {
+		"name": "二式陸上偵察機(熟練)",
+		"type": "RT",
+        "ack": 3,
+        "search": 9
     }
 }
