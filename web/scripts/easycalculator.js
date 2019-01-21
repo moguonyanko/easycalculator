@@ -301,11 +301,12 @@ const calculateMasteryFuncs = {
  * 基地航空隊でも使うクラスなのでShipは不適当。
  */
 class Ship {
-    constructor(name, slotComposition) {
+    constructor(name, slotComposition, airbase) {
         this.name = name;
         this.slots = new Map([...slotComposition].map((size, idx) => {
             return [idx + 1, new Slot(size)];
         }));
+        this.airbase = airbase;
     }
 
     get slotSize() {
@@ -371,7 +372,7 @@ class Ship {
             }
         } else {
             return 0;
-    }
+      }
     }
 
     getSearchAircrafts() {
@@ -389,6 +390,21 @@ class Ship {
             .filter(isSearch)
             .map(slot => slot.aircraft);
     }
+    
+    /**
+     * @param {String} mode 出撃か防空かを示す文字列
+     * @description 偵察機補正値を返します。
+     */
+    getScountingRevision(mode) {
+      const searchAcs = this.getSearchAircrafts();
+      
+      const r = searchAcs.map(ac => {
+        const revFunc = scoutingRevisionFuncs[ac.type.name];
+        return revFunc(ac, mode);
+      }).reduce((acc, current) => acc * current, 1);
+      
+      return r;
+    }
 
     getMastery(mode) {
         const masteries = [...this.slots.keys()]
@@ -396,14 +412,9 @@ class Ship {
 
         let result = [...masteries].reduce((a, b) => a + b);
 
-        const searchAcs = this.getSearchAircrafts();
-        searchAcs.forEach(ac => {
-          const revFunc = scoutingRevisionFuncs[ac.type.name];
-          if (typeof revFunc === "function") {
-            const revision = revFunc(ac, mode);
-            result *= revision;
-          }
-        });
+        if (this.airbase) {
+          result *= this.getScountingRevision(mode);
+        }
 
         return parseInt(result);
     }
@@ -449,7 +460,8 @@ const SHIPS = {};
 const getShipNames = () => Object.keys(SHIPS);
 
 const setShipMaker = shipData => {
-    SHIPS[shipData.name] = () => new Ship(shipData.name, shipData.slotComposition);
+    SHIPS[shipData.name] = () => 
+      new Ship(shipData.name, shipData.slotComposition, shipData.airbase);
 };
 
 const toShipsJSON = () => {
