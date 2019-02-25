@@ -254,6 +254,11 @@
 		"type": "KS",
 		"ack": 6
 	},
+	"re2001cb": {
+		"name": "Re.2001 CB改",
+		"type": "KB",
+		"ack": 4
+	},
 	"re2001g": {
 		"name": "Re.2001 G改",
 		"type": "KK",
