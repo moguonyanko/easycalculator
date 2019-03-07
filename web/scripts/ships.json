@@ -279,6 +279,10 @@
 		"name": "陸奥改",
 		"slotComposition": [3, 3, 3, 3]
 	},
+	"mtu2": {
+		"name": "陸奥改二",
+		"slotComposition": [2, 3, 3, 7]
+	},
 	"yura2": {
 		"name": "由良改二",
 		"slotComposition": [1, 2, 1]
