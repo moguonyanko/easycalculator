@@ -227,6 +227,10 @@
 		"name": "日向改",
 		"slotComposition": [11, 11, 11, 14]
 	},
+	"hyga2": {
+		"name": "日向改二",
+		"slotComposition": [2, 4, 22, 11, 11]
+	},
 	"fuso": {
 		"name": "扶桑改二",
 		"slotComposition": [4, 4, 9, 23]

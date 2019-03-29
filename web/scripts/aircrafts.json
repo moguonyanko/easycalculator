@@ -184,6 +184,11 @@
 		"type": "KB",
 		"ack": 2
 	},
+	"ss12634_3b": {
+		"name": "彗星一二型(六三四空/三号爆弾搭載機)",
+		"type": "KB",
+		"ack": 3
+	},
 	"sutuka2": {
 		"name": "Ju87C改二(KMX搭載機)",
 		"type": "KB",
