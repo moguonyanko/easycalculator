@@ -199,6 +199,11 @@
 		"type": "KB",
 		"ack": 3
 	},
+	"ss12_31kd": {
+		"name": "彗星一二型(三一号光電管爆弾搭載機)",
+		"type": "KB",
+		"ack": 0
+	},
 	"sutuka2": {
 		"name": "Ju87C改二(KMX搭載機)",
 		"type": "KB",
@@ -339,192 +344,192 @@
 		"type": "KS",
 		"ack": 9
 	},
-    "hayabusa64": {
+	"hayabusa64": {
 		"name": "一式戦 隼Ⅱ型(64戦隊)",
 		"type": "RS",
 		"ack": 11,
-        "intercept": 5,
-        "antibomb": 1
-    },
-    "hayabusa54": {
+		"intercept": 5,
+		"antibomb": 1
+	},
+	"hayabusa54": {
 		"name": "一式戦 隼Ⅲ型甲(54戦隊)",
 		"type": "RS",
 		"ack": 8,
-        "intercept": 3,
-        "antibomb": 1
-    },
-    "hayabusa_2": {
+		"intercept": 3,
+		"antibomb": 1
+	},
+	"hayabusa_2": {
 		"name": "一式戦 隼Ⅱ型",
 		"type": "RS",
 		"ack": 6,
-        "intercept": 2
-    },
-    "hayabusa_2": {
+		"intercept": 2
+	},
+	"hayabusa_2": {
 		"name": "一式戦 隼Ⅲ型甲",
 		"type": "RS",
 		"ack": 7,
-        "intercept": 3,
-        "antibomb": 1
-    },
-    "hien244": {
+		"intercept": 3,
+		"antibomb": 1
+	},
+	"hien244": {
 		"name": "三式戦 飛燕(飛行244戦隊)",
 		"type": "RS",
 		"ack": 9,
-        "intercept": 4,
-        "antibomb": 3
-    },
-    "hien1t": {
+		"intercept": 4,
+		"antibomb": 3
+	},
+	"hien1t": {
 		"name": "三式戦 飛燕一型丁",
 		"type": "RS",
 		"ack": 9,
-        "intercept": 3,
-        "antibomb": 2
-    },
-    "hien": {
+		"intercept": 3,
+		"antibomb": 2
+	},
+	"hien": {
 		"name": "三式戦 飛燕",
 		"type": "RS",
 		"ack": 8,
-        "intercept": 3,
-        "antibomb": 1
-    },
-    "hayate": {
+		"intercept": 3,
+		"antibomb": 1
+	},
+	"hayate": {
 		"name": "四式戦 疾風",
 		"type": "RS",
 		"ack": 10,
-        "intercept": 1,
-        "antibomb": 1
-    },
-    "raiden": {
+		"intercept": 1,
+		"antibomb": 1
+	},
+	"raiden": {
 		"name": "雷電",
 		"type": "KYS",
 		"ack": 6,
-        "intercept": 2,
-        "antibomb": 5
-    },
-    "siden11": {
+		"intercept": 2,
+		"antibomb": 5
+	},
+	"siden11": {
 		"name": "紫電一一型",
 		"type": "KYS",
 		"ack": 8,
-        "intercept": 1,
-        "antibomb": 1
-    },
-    "siden21sidenkai": {
+		"intercept": 1,
+		"antibomb": 1
+	},
+	"siden21sidenkai": {
 		"name": "紫電二一型 紫電改",
 		"type": "KYS",
 		"ack": 9,
-        "intercept": 3,
-        "antibomb": 1
-    },
-    "sidenkai343s301": {
+		"intercept": 3,
+		"antibomb": 1
+	},
+	"sidenkai343s301": {
 		"name": "紫電改(三四三空)戦闘301",
 		"type": "KYS",
 		"ack": 11,
-        "intercept": 4,
-        "antibomb": 2
-    },
-    "spitfire1": {
+		"intercept": 4,
+		"antibomb": 2
+	},
+	"spitfire1": {
 		"name": "Spitfire Mk.I",
 		"type": "RS",
 		"ack": 9,
-        "intercept": 1,
-        "antibomb": 2
-    },
-    "spitfire5": {
+		"intercept": 1,
+		"antibomb": 2
+	},
+	"spitfire5": {
 		"name": "Spitfire Mk.V",
 		"type": "RS",
 		"ack": 9,
-        "intercept": 2,
-        "antibomb": 3
-    },
-    "spitfire9j": {
+		"intercept": 2,
+		"antibomb": 3
+	},
+	"spitfire9j": {
 		"name": "Spitfire Mk.IX(熟練)",
 		"type": "RS",
 		"ack": 10,
-        "intercept": 4,
-        "antibomb": 2
-    },
-    "rikko96": {
+		"intercept": 4,
+		"antibomb": 2
+	},
+	"rikko96": {
 		"name": "九六式陸攻",
 		"type": "RK",
 		"ack": 1
-    },
-    "rikko1": {
+	},
+	"rikko1": {
 		"name": "一式陸攻",
 		"type": "RK",
 		"ack": 2
-    },
-    "rikko1_22k": {
+	},
+	"rikko1_22k": {
 		"name": "一式陸攻二二型甲",
 		"type": "RK",
 		"ack": 3
-    },
-    "rikko1_34": {
+	},
+	"rikko1_34": {
 		"name": "一式陸攻三四型",
 		"type": "RK",
 		"ack": 4
-    },
-    "rikko1_nonaka": {
+	},
+	"rikko1_nonaka": {
 		"name": "一式陸攻(野中隊)",
 		"type": "RK",
 		"ack": 3
-    },
-    "ginga": {
+	},
+	"ginga": {
 		"name": "銀河",
 		"type": "RK",
 		"ack": 3
-    },
-    "hayabusa55": {
+	},
+	"hayabusa55": {
 		"name": "爆装一式戦 隼Ⅲ型改(55戦隊)",
 		"type": "RK",
 		"ack": 6
-    },
-    "taiteichan": {
+	},
+	"taiteichan": {
 		"name": "二式大艇",
 		"type": "ST",
-        "search": 12
-    },
-    "catarina": {
+		"search": 12
+	},
+	"catarina": {
 		"name": "PBY-5A Catalina",
 		"type": "ST",
-        "search": 9
-    },
-    "saiun": {
+		"search": 9
+	},
+	"saiun": {
 		"name": "彩雲",
 		"type": "KT",
-        "search": 9
-    },
-    "saiuncl": {
+		"search": 9
+	},
+	"saiuncl": {
 		"name": "彩雲(東カロリン空)",
 		"type": "KT",
-        "search": 10
-    },
-    "keiunkt": {
+		"search": 10
+	},
+	"keiunkt": {
 		"name": "試製景雲(艦偵型)",
 		"type": "KT",
-        "search": 11
-    },
-    "saiuntei4": {
+		"search": 11
+	},
+	"saiuntei4": {
 		"name": "彩雲(偵四)",
 		"type": "KT",
-        "ack": 2,
-        "search": 10
-    },
-    "nisikikantei": {
+		"ack": 2,
+		"search": 10
+	},
+	"nisikikantei": {
 		"name": "二式艦上偵察機",
 		"type": "KT",
-        "ack": 1,
-        "search": 7
-    },
-    "nisikirikutei": {
+		"ack": 1,
+		"search": 7
+	},
+	"nisikirikutei": {
 		"name": "二式陸上偵察機",
 		"type": "RT",
-        "ack": 3,
-        "search": 8
-    },
-    "nisikirikuteij": {
+		"ack": 3,
+		"search": 8
+	},
+	"nisikirikuteij": {
 		"name": "二式陸上偵察機(熟練)",
 		"type": "RT",
-        "ack": 3,
-        "search": 9
-    }
+		"ack": 3,
+		"search": 9
+	}
 }

@@ -259,6 +259,10 @@
 		"name": "神威改母",
 		"slotComposition": [1, 1, 1]
 	},
+	"kongou2h": {
+		"name": "金剛改二丙",
+		"slotComposition": [3, 3, 3, 6]
+	},
 	"ymt": {
 		"name": "大和改",
 		"slotComposition": [7, 7, 7, 7]
@@ -371,14 +375,14 @@
 		"name": "Gotland改",
 		"slotComposition": [1, 1, 1, 1]
 	},
-  "ab_case1": {
+	"ab_case1": {
 		"name": "基地航空隊(戦闘機・攻撃機)",
 		"slotComposition": [18, 18, 18, 18],
-    "airbase": true
-  },
-  "ab_case2": {
+		"airbase": true
+	},
+	"ab_case2": {
 		"name": "基地航空隊(偵察機・戦闘機・攻撃機)",
 		"slotComposition": [4, 18, 18, 18],
-    "airbase": true
-  }
+		"airbase": true
+  	}
 }
