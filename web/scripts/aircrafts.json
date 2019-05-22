@@ -9,8 +9,8 @@
 		"type": "KS",
 		"ack": 11
 	},
-	"rpk": {
-		"name": "烈風改",
+	"rp11": {
+		"name": "烈風一一型",
 		"type": "KS",
 		"ack": 12
 	},
@@ -405,6 +405,13 @@
 		"ack": 6,
 		"intercept": 2,
 		"antibomb": 5
+	},
+	"reppukai": {
+		"name": "烈風改",
+		"type": "KYS",
+		"ack": 10,
+		"intercept": 2,
+		"antibomb": 6
 	},
 	"siden11": {
 		"name": "紫電一一型",
