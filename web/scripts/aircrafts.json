@@ -14,6 +14,16 @@
 		"type": "KS",
 		"ack": 12
 	},
+	"rpkshisei": {
+		"name": "烈風改(試製艦載型)",
+		"type": "KS",
+		"ack": 10
+	},
+	"rpk2": {
+		"name": "烈風改二",
+		"type": "KS",
+		"ack": 13
+	},
 	"z53i": {
 		"name": "零式艦戦53型(岩本隊)",
 		"type": "KS",
@@ -412,6 +422,13 @@
 		"ack": 10,
 		"intercept": 2,
 		"antibomb": 6
+	},
+	"reppukai352j": {
+		"name": "烈風改(三五二空/熟練)",
+		"type": "KYS",
+		"ack": 11,
+		"intercept": 3,
+		"antibomb": 7
 	},
 	"siden11": {
 		"name": "紫電一一型",
