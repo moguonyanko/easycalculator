@@ -3,6 +3,14 @@
 		"name": "赤城改",
 		"slotComposition": [20, 20, 32, 10]
 	},
+	"ag2": {
+		"name": "赤城改二",
+		"slotComposition": [21, 21, 32, 12, 4]
+	},
+	"ag2b": {
+		"name": "赤城改二戊",
+		"slotComposition": [16, 16, 40, 4, 2]
+	},
 	"kg": {
 		"name": "加賀改",
 		"slotComposition": [20, 20, 46, 12]
