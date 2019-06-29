@@ -331,6 +331,10 @@
 		"name": "Roma改",
 		"slotComposition": [3, 3, 3, 3]
 	},
+	"richelieu": {
+		"name": "Richelieu改",
+		"slotComposition": [3, 3, 3, 3]
+	},
 	"zara": {
 		"name": "Zara改",
 		"slotComposition": [2, 2, 2, 2]
