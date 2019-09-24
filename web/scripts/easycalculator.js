@@ -22,6 +22,7 @@ const AIRCRAFT_TYPE_NAMES = {
     HB: "hunbaku", //噴式爆撃機
     RS: "rikusen", //陸軍戦闘機
     KYS: "kyokusen", //局地戦闘機
+    ROS: "rocketsen", //ロケット戦闘機
     RK: "rikko", //陸上攻撃機
     KT: "kantei", //艦上偵察機
     ST: "suitei", //水上偵察機
@@ -53,6 +54,7 @@ const AIRCRAFT_TYPES = {
     [AIRCRAFT_TYPE_NAMES.HB]: new AircraftType(AIRCRAFT_TYPE_NAMES.HB, 3, true),
     [AIRCRAFT_TYPE_NAMES.RS]: new AircraftType(AIRCRAFT_TYPE_NAMES.RS, 25),
     [AIRCRAFT_TYPE_NAMES.KYS]: new AircraftType(AIRCRAFT_TYPE_NAMES.KYS, 25),
+    [AIRCRAFT_TYPE_NAMES.ROS]: new AircraftType(AIRCRAFT_TYPE_NAMES.ROS, 25),
     [AIRCRAFT_TYPE_NAMES.RK]: new AircraftType(AIRCRAFT_TYPE_NAMES.RK, 3, true),
     [AIRCRAFT_TYPE_NAMES.KT]: new AircraftType(AIRCRAFT_TYPE_NAMES.KT, 3, true),
     [AIRCRAFT_TYPE_NAMES.ST]: new AircraftType(AIRCRAFT_TYPE_NAMES.ST, 3, true),

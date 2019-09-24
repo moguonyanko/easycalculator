@@ -492,6 +492,24 @@
 		"intercept": 4,
 		"antibomb": 2
 	},
+	"siseishusui": {
+		"name": "試製秋水",
+		"type": "ROS",
+		"ack": 2,
+		"antibomb": 8
+	},
+	"shusui": {
+		"name": "秋水",
+		"type": "ROS",
+		"ack": 3,
+		"antibomb": 9
+	},
+	"comet": {
+		"name": "Me163B",
+		"type": "ROS",
+		"ack": 2,
+		"antibomb": 9
+	},
 	"rikko96": {
 		"name": "九六式陸攻",
 		"type": "RK",
