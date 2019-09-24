@@ -286,6 +286,11 @@ const getSelectedMasteryModeName = () => {
     return checkedValues[0];
 };
 
+const isHighAltitude = () => {
+    const el = doc.querySelector('.highaltitude-mode');
+    return el.checked;    
+};
+
 const appendNewShip = () => {
     if (MAX_SHIP_SIZE <= selectAllShipElements().length) {
         return;
@@ -301,7 +306,9 @@ const calculateMastery = () => {
     const flags = getTargetShipFlags();
     const targetShips = allShips.filter((ship, index) => flags[index]);
     const mode = getSelectedMasteryModeName();
-    const masteries = [...targetShips].map(ship => ship.getMastery(mode));
+    const highAltitude = isHighAltitude();
+    const masteries = [...targetShips]
+        .map(ship => ship.getMastery(mode, highAltitude));
     const result = masteries.reduce((m1, m2) => m1 + m2, 0);
     const resultArea = doc.querySelector(".result .result-area");
     resultArea.innerText = result;

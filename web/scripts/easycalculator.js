@@ -82,46 +82,46 @@ const CORRECTION_VALUES = {
  */
 const scoutingRevisionFuncs = {
     // 艦上偵察機
-    [AIRCRAFT_TYPE_NAMES.KT] (aircraft, mode) {
-      if (mode === MASTERYMODE.SOTRIE) {
-        return 1;
-      } else if (mode === MASTERYMODE.AIRDEFENCE) {
-        if (aircraft.search >= 9) {
-          return 1.3;
-        } else {
-          return 1.2;
+    [AIRCRAFT_TYPE_NAMES.KT](aircraft, mode) {
+        if (mode === MASTERYMODE.SOTRIE) {
+            return 1;
+        } else if (mode === MASTERYMODE.AIRDEFENCE) {
+            if (aircraft.search >= 9) {
+                return 1.3;
+            } else {
+                return 1.2;
+            }
         }
-      }
-      return 1;
+        return 1;
     },
     // 陸上偵察機
-    [AIRCRAFT_TYPE_NAMES.RT] (aircraft, mode) {
-      if (mode === MASTERYMODE.SOTRIE) {
-        if (aircraft.search >= 9) {
-          return 1.18;
-        } else {
-          return 1.15;
+    [AIRCRAFT_TYPE_NAMES.RT](aircraft, mode) {
+        if (mode === MASTERYMODE.SOTRIE) {
+            if (aircraft.search >= 9) {
+                return 1.18;
+            } else {
+                return 1.15;
+            }
+        } else if (mode === MASTERYMODE.AIRDEFENCE) {
+            // 今のところ防空時の陸偵補正は索敵値によらず一律同値としている。
+            return 1.18;
         }
-      } else if (mode === MASTERYMODE.AIRDEFENCE) {
-        // 今のところ防空時の陸偵補正は索敵値によらず一律同値としている。
-        return 1.18;
-      }
-      return 1;
+        return 1;
     },
     // 水上偵察機・大型飛行艇
-    [AIRCRAFT_TYPE_NAMES.ST] (aircraft, mode) {
-      if (mode === MASTERYMODE.SOTRIE) {
-        return 1;
-      } else if (mode === MASTERYMODE.AIRDEFENCE) {
-        if (aircraft.search >= 9) {
-          return 1.16;
-        } else if (aircraft.search >= 8) {
-          return 1.13;
-        } else {
-          return 1.1;
+    [AIRCRAFT_TYPE_NAMES.ST](aircraft, mode) {
+        if (mode === MASTERYMODE.SOTRIE) {
+            return 1;
+        } else if (mode === MASTERYMODE.AIRDEFENCE) {
+            if (aircraft.search >= 9) {
+                return 1.16;
+            } else if (aircraft.search >= 8) {
+                return 1.13;
+            } else {
+                return 1.1;
+            }
         }
-      }
-      return 1;
+        return 1;
     }
 };
 
@@ -146,15 +146,15 @@ class Aircraft {
     /**
      * Parameter Context Matchingのデフォルト値を[]や{}の右辺に書くことができる。
      */
-    constructor( {
-      name,
-      type,
-      ack = 0, //対空
-      intercept = 0, //迎撃
-      antibomb = 0, //対爆
-      search = 0, //索敵
-      skill = 7, //内部熟練度
-      improvement = IMPROVEMENT_VALUES.DEFAULT } = {}) {
+    constructor({
+        name,
+        type,
+        ack = 0, //対空
+        intercept = 0, //迎撃
+        antibomb = 0, //対爆
+        search = 0, //索敵
+        skill = 7, //内部熟練度
+        improvement = IMPROVEMENT_VALUES.DEFAULT } = {}) {
         this.name = name;
         this.type = type;
         this.ack = ack;
@@ -211,15 +211,15 @@ const AIRCRAFTS_FACTORY = {};
 
 const setAircraftMaker = acData => {
     AIRCRAFTS_FACTORY[acData.name] = () => new Aircraft({
-            name: acData.name,
-            type: getAircraftType(AIRCRAFT_TYPE_NAMES[acData.type]),
-            ack: acData.ack,
-            intercept: acData.intercept,
-            antibomb: acData.antibomb,
-            search: acData.search,
-            skill: acData.skill,
-            improvement: acData.improvement
-        });
+        name: acData.name,
+        type: getAircraftType(AIRCRAFT_TYPE_NAMES[acData.type]),
+        ack: acData.ack,
+        intercept: acData.intercept,
+        antibomb: acData.antibomb,
+        search: acData.search,
+        skill: acData.skill,
+        improvement: acData.improvement
+    });
 };
 
 const toAircraftsJSON = () => {
@@ -279,17 +279,17 @@ const MASTERYMODE = {
 };
 
 /**
- * 制空値の計算を行う。
+ * 制空値計算を行う関数群です。各モードごとに定義されています。
  */
 const calculateMasteryFuncs = {
-    [MASTERYMODE.SOTRIE] ( {ac, slot, noSkillBonus = false} = {}) {
+    [MASTERYMODE.SOTRIE]({ ac, slot, noSkillBonus = false } = {}) {
         const ack = ac.ack + getValueByImprovement(ac);
         const skillBonus = noSkillBonus ? 0 : getSkillBonus(ac);
         const mastery = (ack + (ac.intercept * 1.5)) *
             Math.sqrt(slot.size) + skillBonus;
         return parseInt(mastery);
     },
-    [MASTERYMODE.AIRDEFENCE] ( {ac, slot, noSkillBonus = false} = {}) {
+    [MASTERYMODE.AIRDEFENCE]({ ac, slot, noSkillBonus = false } = {}) {
         const ack = ac.ack + getValueByImprovement(ac);
         const skillBonus = noSkillBonus ? 0 : getSkillBonus(ac);
         const mastery = (ack + ac.intercept + (ac.antibomb * 2)) *
@@ -357,7 +357,7 @@ class Ship {
         this.setAircraft(slotNo, null);
     }
 
-    getMasteryOneSlot( {slotNo, mode = MASTERYMODE.SOTRIE} = {}) {
+    getMasteryOneSlot({ slotNo, mode = MASTERYMODE.SOTRIE } = {}) {
         if (this.slots.has(slotNo)) {
             const ac = this.getAircraft(slotNo);
             if (ac) {
@@ -365,7 +365,7 @@ class Ship {
                 const noSkillBonus = this.getNoSkillBonus(slotNo);
                 const func = calculateMasteryFuncs[mode];
                 if (typeof func === "function") {
-                    return func({ac, slot, noSkillBonus});
+                    return func({ ac, slot, noSkillBonus });
                 } else {
                     throw new Error(`Unsupported mastery mode: ${mode}`);
                 }
@@ -374,7 +374,21 @@ class Ship {
             }
         } else {
             return 0;
-      }
+        }
+    }
+
+    collectAircrafts(aircraftType) {
+        const predicate = slot => {
+            if (!slot.aircraft) {
+                return false;
+            }
+            const typeName = slot.aircraft.type.name;
+            return typeName === aircraftType;
+        };
+
+        return Array.from(this.slots.values())
+            .filter(predicate)
+            .map(slot => slot.aircraft);
     }
 
     getSearchAircrafts() {
@@ -384,7 +398,7 @@ class Ship {
             }
             const typeName = slot.aircraft.type.name;
             return typeName === AIRCRAFT_TYPE_NAMES.KT ||
-                typeName === AIRCRAFT_TYPE_NAMES.ST || 
+                typeName === AIRCRAFT_TYPE_NAMES.ST ||
                 typeName === AIRCRAFT_TYPE_NAMES.RT;
         };
 
@@ -392,30 +406,63 @@ class Ship {
             .filter(isSearch)
             .map(slot => slot.aircraft);
     }
-    
+
+    getRocketAircrafts() {
+        return this.collectAircrafts(AIRCRAFT_TYPE_NAMES.ROS);
+    }
+
     /**
      * @param {String} mode 出撃か防空かを示す文字列
      * @description 偵察機補正値を返します。
      */
     getScountingRevision(mode) {
-      const searchAcs = this.getSearchAircrafts();
-      
-      const r = searchAcs.map(ac => {
-        const revFunc = scoutingRevisionFuncs[ac.type.name];
-        return revFunc(ac, mode);
-      }).reduce((acc, current) => acc * current, 1);
-      
-      return r;
+        const searchAcs = this.getSearchAircrafts();
+
+        const r = searchAcs.map(ac => {
+            const revFunc = scoutingRevisionFuncs[ac.type.name];
+            return revFunc(ac, mode);
+        }).reduce((acc, current) => acc * current, 1);
+
+        return r;
     }
 
-    getMastery(mode) {
+    /**
+     * @name getHighAltitudeRevision
+     * @function
+     * @returns {Number} 高高度迎撃機の配備数に基づいて得られた補正値
+     * @description 高高度迎撃機の配備数に基づく補正値を調べて返します。
+     */
+    getHighAltitudeRevision() {
+        const ross = this.getRocketAircrafts();
+
+        switch (ross.length) {
+            case 0:
+                return 0.5;
+            case 1:
+                return 0.8;
+            case 2:
+                return 1.1;
+            default:
+                return 1.2;
+        }
+    }
+
+    /**
+     * TODO:
+     * 高高度迎撃機は航空隊をまたいで配備されていても効果を発揮するが
+     * 一つの航空隊に全て配備されているものとして計算してしまっている。
+     */
+    getMastery(mode, highAltitude) {
         const masteries = [...this.slots.keys()]
-            .map(slotNo => this.getMasteryOneSlot({slotNo, mode}));
+            .map(slotNo => this.getMasteryOneSlot({ slotNo, mode }));
 
         let result = [...masteries].reduce((a, b) => a + b);
 
         if (this.airbase) {
-          result *= this.getScountingRevision(mode);
+            result *= this.getScountingRevision(mode);
+            if (highAltitude) {
+                result *= this.getHighAltitudeRevision();
+            }
         }
 
         return parseInt(result);
@@ -426,7 +473,7 @@ class Ship {
             const [slotNo, slot] = value;
             return `slot[${slotNo}]:${slot}`;
         }));
-        
+
         return s.join("\n");
     }
 
@@ -462,8 +509,8 @@ const SHIPS = {};
 const getShipNames = () => Object.keys(SHIPS);
 
 const setShipMaker = shipData => {
-    SHIPS[shipData.name] = () => 
-      new Ship(shipData.name, shipData.slotComposition, shipData.airbase);
+    SHIPS[shipData.name] = () =>
+        new Ship(shipData.name, shipData.slotComposition, shipData.airbase);
 };
 
 const toShipsJSON = () => {
@@ -485,7 +532,7 @@ const getShip = name => {
 };
 
 const makeAircraft = (name, type, ack) => {
-    return new Aircraft({name, type, ack});
+    return new Aircraft({ name, type, ack });
 };
 
 const testCalculateMasteryCaseSortie = () => {
@@ -522,17 +569,12 @@ const testCalculateMasteryCaseSortie = () => {
 
 const testCalculateMasteryCaseAirDefence = () => {
     console.log("***** 防空テスト *****");
-    const base1 = new Ship("no1base", [4, 18, 18, 18]);
+    const base1 = new Ship("no1base", [4, 18, 18, 18], true);
     base1.setAircraft(1, new Aircraft({
         "name": "彩雲",
         "type": getAircraftType(AIRCRAFT_TYPE_NAMES.KT),
         "search": 9
     }));
-//		base1.setAircraft(1, new Aircraft({ 
-//            "name": "烈風",
-//            "type": getAircraftType(AIRCRAFT_TYPE_NAMES.KS),
-//            "ack": 10
-//        }));
     base1.setAircraft(2, new Aircraft({
         "name": "一式戦 隼Ⅱ型",
         "type": getAircraftType(AIRCRAFT_TYPE_NAMES.RS),
@@ -559,10 +601,48 @@ const testCalculateMasteryCaseAirDefence = () => {
     console.log(JSON.stringify(base1));
 };
 
+const testCalculateMasteryCaseHighAltitude = () => {
+    console.log("***** 防空テスト(高高度迎撃) *****");
+    const airbase = new Ship("高高度迎撃基地航空隊1", [18, 18, 18, 18], true);
+    airbase.setAircraft(1, new Aircraft({
+        "name": "試製秋水",
+        "type": getAircraftType(AIRCRAFT_TYPE_NAMES.ROS),
+        "ack": 2,
+        'antibomb': 8
+    }));
+    airbase.setAircraft(2, new Aircraft({
+        "name": "Me163B",
+        "type": getAircraftType(AIRCRAFT_TYPE_NAMES.ROS),
+        "ack": 2,
+        'antibomb': 9
+    }));
+    airbase.setAircraft(3, new Aircraft({
+        "name": "秋水",
+        "type": getAircraftType(AIRCRAFT_TYPE_NAMES.ROS),
+        "ack": 3,
+        'antibomb': 9
+    }));
+    airbase.setAircraft(4, new Aircraft({
+        "name": "烈風改(三五二空/熟練)",
+        "type": getAircraftType(AIRCRAFT_TYPE_NAMES.KYS),
+        "ack": 11,
+        "intercept": 3,
+        "antibomb": 7
+    }));
+    const mode = "airDefence", 
+        highAltitude = true;
+    console.log(airbase.toString());
+    console.log(airbase.getMastery(mode, highAltitude));
+    console.log(JSON.stringify(airbase));
+};
+
 const testCalculateMastery = () => {
     testCalculateMasteryCaseSortie();
     testCalculateMasteryCaseAirDefence();
+    testCalculateMasteryCaseHighAltitude();
 };
+
+//testCalculateMastery();
 
 const easycalculator = {
     getShipNames,
