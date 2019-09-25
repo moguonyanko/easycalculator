@@ -453,16 +453,18 @@ class Ship {
     }
 
     getMastery(mode) {
+        const scountRev = this.getScountingRevision(mode);
         const masteries = [...this.slots.keys()]
-            .map(slotNo => this.getMasteryOneSlot({ slotNo, mode }));
+            .map(slotNo => {
+                const mastery = this.getMasteryOneSlot({ slotNo, mode });
+                if (this.airbase) {
+                    return parseInt(mastery * scountRev);
+                } else {
+                    return parseInt(mastery);
+                }
+            });
 
-        let result = [...masteries].reduce((a, b) => a + b);
-
-        if (this.airbase) {
-            result *= this.getScountingRevision(mode);
-        }
-
-        return parseInt(result);
+        return [...masteries].reduce((a, b) => a + b, 0);
     }
 
     toString() {
@@ -506,7 +508,7 @@ class Fleet {
         this.ships = ships;
     }
 
-    getMastery(mode, highAltitude) {
+    getMastery({mode, highAltitude}) {
         const rev = highAltitude ? getHighAltitudeRevision(this.ships) : 1;
         const m = this.ships.map(ship => ship.getMastery(mode))
             .reduce((acc, current) => acc + current, 0);
@@ -651,7 +653,24 @@ const testCalculateMasteryCaseHighAltitude = () => {
     const mode = "airDefence";
     const fleet = new Fleet([airbase]);
     console.log(fleet.toString());
-    console.log(fleet.getMastery(mode, true));
+    console.log(fleet.getMastery({mode, highAltitude: true}));
+    console.log(JSON.stringify(fleet));
+};
+
+const testOneCompanyMastery = () => {
+    console.log("***** 防空テスト(中隊1つ) *****");
+    const airbase = new Ship("中隊1つの防空時制空値テスト", [4, 18, 18, 18], true);
+    airbase.setAircraft(2, new Aircraft({
+        "name": "紫電改(三四三空)戦闘301",
+        "type": getAircraftType(AIRCRAFT_TYPE_NAMES.KYS),
+		"ack": 11,
+		"intercept": 4,
+		"antibomb": 2
+    }));
+    const mode = "airDefence";
+    const fleet = new Fleet([airbase]);
+    console.log(fleet.toString());
+    console.log(fleet.getMastery({mode, highAltitude: false}));
     console.log(JSON.stringify(fleet));
 };
 
@@ -659,9 +678,10 @@ const testCalculateMastery = () => {
     testCalculateMasteryCaseSortie();
     testCalculateMasteryCaseAirDefence();
     testCalculateMasteryCaseHighAltitude();
+    testOneCompanyMastery();
 };
 
-//testCalculateMastery();
+testCalculateMastery();
 
 const easycalculator = {
     getShipNames,

@@ -308,9 +308,9 @@ const calculateMastery = () => {
     const mode = getSelectedMasteryModeName();
     const highAltitude = isHighAltitude();
     const fleet = new EC.Fleet(targetShips);
-    const result = fleet.getMastery(mode, highAltitude);
+    const result = fleet.getMastery({mode, highAltitude});
     const resultArea = doc.querySelector(".result .result-area");
-    resultArea.innerText = result;
+    resultArea.textContent = result;
 };
 
 const addListener = () => {
