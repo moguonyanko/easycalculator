@@ -307,9 +307,8 @@ const calculateMastery = () => {
     const targetShips = allShips.filter((ship, index) => flags[index]);
     const mode = getSelectedMasteryModeName();
     const highAltitude = isHighAltitude();
-    const masteries = [...targetShips]
-        .map(ship => ship.getMastery(mode, highAltitude));
-    const result = masteries.reduce((m1, m2) => m1 + m2, 0);
+    const fleet = new EC.Fleet(targetShips);
+    const result = fleet.getMastery(mode, highAltitude);
     const resultArea = doc.querySelector(".result .result-area");
     resultArea.innerText = result;
 };

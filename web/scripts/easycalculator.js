@@ -299,6 +299,30 @@ const calculateMasteryFuncs = {
 };
 
 /**
+ * @name getHighAltitudeRevision
+ * @function
+ * @param {Array} 航空機を保持した艦船や基地の配列
+ * @returns {Number} 高高度迎撃機の配備数に基づいて得られた補正値
+ * @description 高高度迎撃機の配備数に基づく補正値を調べて返します。
+ */
+const getHighAltitudeRevision = (ships = []) => {
+    const rosSize = ships.map(ship => ship.getRocketAircrafts())
+        .reduce((acc, current) => acc.concat(current), [])
+        .length;
+
+    switch (rosSize) {
+        case 0:
+            return 0.5;
+        case 1:
+            return 0.8;
+        case 2:
+            return 1.1;
+        default:
+            return 1.2;
+    }
+};
+
+/**
  * TODO:
  * 基地航空隊でも使うクラスなのでShipは不適当。
  */
@@ -391,6 +415,7 @@ class Ship {
             .map(slot => slot.aircraft);
     }
 
+    // TODO: collectAircraftsを使うように修正する。
     getSearchAircrafts() {
         const isSearch = slot => {
             if (!slot.aircraft) {
@@ -426,33 +451,7 @@ class Ship {
         return r;
     }
 
-    /**
-     * @name getHighAltitudeRevision
-     * @function
-     * @returns {Number} 高高度迎撃機の配備数に基づいて得られた補正値
-     * @description 高高度迎撃機の配備数に基づく補正値を調べて返します。
-     */
-    getHighAltitudeRevision() {
-        const ross = this.getRocketAircrafts();
-
-        switch (ross.length) {
-            case 0:
-                return 0.5;
-            case 1:
-                return 0.8;
-            case 2:
-                return 1.1;
-            default:
-                return 1.2;
-        }
-    }
-
-    /**
-     * TODO:
-     * 高高度迎撃機は航空隊をまたいで配備されていても効果を発揮するが
-     * 一つの航空隊に全て配備されているものとして計算してしまっている。
-     */
-    getMastery(mode, highAltitude) {
+    getMastery(mode) {
         const masteries = [...this.slots.keys()]
             .map(slotNo => this.getMasteryOneSlot({ slotNo, mode }));
 
@@ -460,9 +459,6 @@ class Ship {
 
         if (this.airbase) {
             result *= this.getScountingRevision(mode);
-            if (highAltitude) {
-                result *= this.getHighAltitudeRevision();
-            }
         }
 
         return parseInt(result);
@@ -501,6 +497,28 @@ class NoNameShip extends Ship {
 
     getMastery() {
         return 0;
+    }
+}
+
+class Fleet {
+    constructor(ships = []) {
+        this.ships = ships;
+    }
+
+    getMastery(mode, highAltitude) {
+        const rev = highAltitude ? getHighAltitudeRevision(this.ships) : 1;
+        const m = this.ships.map(ship => ship.getMastery(mode))
+            .reduce((acc, current) => acc + current, 0);
+        return parseInt(m * rev);
+    }
+
+    toString() {
+        return this.ships.map(ship => ship.toString())
+            .join(',');
+    }
+
+    toJSON() {
+        return this.ships.map(ship => ship.toJSON());
     }
 }
 
@@ -629,11 +647,11 @@ const testCalculateMasteryCaseHighAltitude = () => {
         "intercept": 3,
         "antibomb": 7
     }));
-    const mode = "airDefence", 
-        highAltitude = true;
-    console.log(airbase.toString());
-    console.log(airbase.getMastery(mode, highAltitude));
-    console.log(JSON.stringify(airbase));
+    const mode = "airDefence";
+    const fleet = new Fleet([airbase]);
+    console.log(fleet.toString());
+    console.log(fleet.getMastery(mode, true));
+    console.log(JSON.stringify(fleet));
 };
 
 const testCalculateMastery = () => {
@@ -647,6 +665,7 @@ const testCalculateMastery = () => {
 const easycalculator = {
     getShipNames,
     getShip,
+    Fleet,
     AIRCRAFTS_FACTORY,
     IMPROVEMENT_VALUES,
     setShipMaker,
