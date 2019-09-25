@@ -279,7 +279,8 @@ const MASTERYMODE = {
 };
 
 /**
- * 制空値計算を行う関数群です。各モードごとに定義されています。
+ * @name calculateMasteryFuncs
+ * @description 1スロットの制空値計算を行う関数群です。各モードごとに定義されています。
  */
 const calculateMasteryFuncs = {
     [MASTERYMODE.SOTRIE]({ ac, slot, noSkillBonus = false } = {}) {
