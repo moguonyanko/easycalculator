@@ -492,6 +492,13 @@
 		"intercept": 4,
 		"antibomb": 2
 	},
+	"fw190d9": {
+		"name": "Fw190 D-9",
+		"type": "RS",
+		"ack": 12,
+		"intercept": 3,
+		"antibomb": 3
+	},
 	"siseishusui": {
 		"name": "試製秋水",
 		"type": "ROS",
