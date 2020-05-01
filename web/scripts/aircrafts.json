@@ -369,6 +369,11 @@
 		"type": "KS",
 		"ack": 10
 	},
+	"xf5u": {
+		"name": "XF5U",
+		"type": "KS",
+		"ack": 12
+	},
 	"seafire3k": {
 		"name": "Seafire Mk.III改",
 		"type": "KS",

@@ -271,6 +271,10 @@
 		"name": "金剛改二丙",
 		"slotComposition": [3, 3, 3, 6]
 	},
+	"hiei2h": {
+		"name": "比叡改二丙",
+		"slotComposition": [2, 2, 2, 2]
+	},
 	"ymt": {
 		"name": "大和改",
 		"slotComposition": [7, 7, 7, 7]
@@ -386,6 +390,10 @@
 	"Gotlandk": {
 		"name": "Gotland改",
 		"slotComposition": [1, 1, 1, 1]
+	},
+	"Gotlandandra": {
+		"name": "Gotland andra",
+		"slotComposition": [2, 2, 3, 7]
 	},
 	"ab_case1": {
 		"name": "基地航空隊(戦闘機・攻撃機)",
