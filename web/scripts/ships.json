@@ -15,6 +15,18 @@
 		"name": "加賀改",
 		"slotComposition": [20, 20, 46, 12]
 	},
+	"kg2": {
+		"name": "加賀改二",
+		"slotComposition": [20, 20, 44, 12, 3]
+	},
+	"kg2b": {
+		"name": "加賀改二戊",
+		"slotComposition": [18, 18, 40, 8, 2]
+	},
+	"kg2g": {
+		"name": "加賀改二護",
+		"slotComposition": [16, 16, 18, 8, 6]
+	},
 	"sr": {
 		"name": "蒼龍改",
 		"slotComposition": [18, 27, 18, 10]
