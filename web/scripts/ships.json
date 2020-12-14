@@ -395,6 +395,10 @@
 		"name": "Intrepid改",
 		"slotComposition": [40, 36, 21, 15]
 	},
+	"hornetk": {
+		"name": "Hornet改",
+		"slotComposition": [36, 19, 19, 16]
+	},
 	"Gotland": {
 		"name": "Gotland",
 		"slotComposition": [2, 3, 6]
