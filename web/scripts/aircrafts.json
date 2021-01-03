@@ -552,6 +552,11 @@
 		"type": "RK",
 		"ack": 3
 	},
+	"hiryu": {
+		"name": "四式重爆 飛龍",
+		"type": "RK",
+		"ack": 5
+	},
 	"hayabusa55": {
 		"name": "爆装一式戦 隼Ⅲ型改(55戦隊)",
 		"type": "RK",
