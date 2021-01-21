@@ -17,6 +17,7 @@ const AIRCRAFT_TYPE_NAMES = {
     KS: "kansen", //艦上戦闘機
     KK: "kankou", //艦上攻撃機
     KB: "kanbaku", //艦上爆撃機
+    BS: "bakusen", //爆戦
     SB: "suibaku", //水上爆撃機
     SS: "suisen", //水上戦闘機
     HB: "hunbaku", //噴式爆撃機
@@ -49,6 +50,7 @@ const AIRCRAFT_TYPES = {
     [AIRCRAFT_TYPE_NAMES.KS]: new AircraftType(AIRCRAFT_TYPE_NAMES.KS, 25),
     [AIRCRAFT_TYPE_NAMES.KK]: new AircraftType(AIRCRAFT_TYPE_NAMES.KK, 3, true),
     [AIRCRAFT_TYPE_NAMES.KB]: new AircraftType(AIRCRAFT_TYPE_NAMES.KB, 3, true),
+    [AIRCRAFT_TYPE_NAMES.BS]: new AircraftType(AIRCRAFT_TYPE_NAMES.BS, 3, true),
     [AIRCRAFT_TYPE_NAMES.SB]: new AircraftType(AIRCRAFT_TYPE_NAMES.SB, 9, true),
     [AIRCRAFT_TYPE_NAMES.SS]: new AircraftType(AIRCRAFT_TYPE_NAMES.SS, 25),
     [AIRCRAFT_TYPE_NAMES.HB]: new AircraftType(AIRCRAFT_TYPE_NAMES.HB, 3, true),
@@ -62,6 +64,26 @@ const AIRCRAFT_TYPES = {
 };
 
 /**
+ * @private
+ * @name CorrectionValue
+ * @class
+ * @description 改修による補正値と補正結果を扱うクラス
+ */
+class CorrectionValue {
+    static defaultValue = new CorrectionValue();
+
+    constructor({ correction = 0, 
+        correctionFunc = (c, i) => c * i } = {}) {
+        this.correction = correction;
+        this.correctionFunc = correctionFunc;
+    }
+
+    getValue(implement) {
+        return this.correctionFunc(this.correction, implement);
+    }
+}
+
+/**
  * AircraftTypeの名前ではなくAircraftTypeオブジェクトをキーにしたい。
  * Mapを使って表現すれば可能だが，現在のMapは値取得時に渡されたキーを
  * 同値演算子(===)でしか既存のキーと比較できない。
@@ -69,11 +91,15 @@ const AIRCRAFT_TYPES = {
  * 改修できない機種の場合，改修による補正値は0として扱う。
  */
 const CORRECTION_VALUES = {
-    [AIRCRAFT_TYPE_NAMES.KS]: 0.2,
-    [AIRCRAFT_TYPE_NAMES.KB]: 0.25,
-    [AIRCRAFT_TYPE_NAMES.SS]: 0.2,
-    [AIRCRAFT_TYPE_NAMES.KYS]: 0.2,
-    [AIRCRAFT_TYPE_NAMES.RS]: 0.2
+    [AIRCRAFT_TYPE_NAMES.KS]: new CorrectionValue({ correction: 0.2 }),
+    [AIRCRAFT_TYPE_NAMES.BS]: new CorrectionValue({ correction: 0.25 }),
+    [AIRCRAFT_TYPE_NAMES.SS]: new CorrectionValue({ correction: 0.2 }),
+    [AIRCRAFT_TYPE_NAMES.KYS]: new CorrectionValue({ correction: 0.2 }),
+    [AIRCRAFT_TYPE_NAMES.RS]: new CorrectionValue({ correction: 0.2 }),
+    [AIRCRAFT_TYPE_NAMES.RK]: new CorrectionValue({ 
+        correction: 0.5,
+        correctionFunc: (c, i) => c * Math.sqrt(i)
+    })
 };
 
 /**
@@ -125,11 +151,15 @@ const scoutingRevisionFuncs = {
     }
 };
 
-const getCorrectionValue = aircraft => {
-    if (aircraft.type.name in CORRECTION_VALUES) {
-        return CORRECTION_VALUES[aircraft.type.name];
+/**
+ * 改修による制空値の補正がない機種は補正値0として扱われる。
+ */
+const getCorrectionValue = aircraftTypeName => {
+    if (aircraftTypeName in CORRECTION_VALUES) {
+        return CORRECTION_VALUES[aircraftTypeName];
     } else {
-        return 0;
+        // 補正なし(艦攻、水爆など)
+        return CorrectionValue.defaultValue;
     }
 };
 
@@ -138,8 +168,8 @@ const getSkillBonus = aircraft => {
 };
 
 const getValueByImprovement = aircraft => {
-    const cv = getCorrectionValue(aircraft);
-    return cv * aircraft.improvement;
+    const cv = getCorrectionValue(aircraft.type.name);
+    return cv.getValue(aircraft.improvement);
 };
 
 class Aircraft {

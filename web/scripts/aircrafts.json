@@ -41,12 +41,12 @@
 	},
 	"z62i": {
 		"name": "零式艦戦62型(岩井隊)",
-		"type": "KB",
+		"type": "BS",
 		"ack": 7
 	},
 	"f4u1d": {
 		"name": "F4U-1D",
-		"type": "KB",
+		"type": "BS",
 		"ack": 7
 	},
 	"fm2": {
@@ -86,12 +86,12 @@
 	},
 	"z62": {
 		"name": "零式艦戦62型(爆戦)",
-		"type": "KB",
+		"type": "BS",
 		"ack": 4
 	},
 	"z63": {
 		"name": "零式艦戦63型(爆戦)",
-		"type": "KB",
+		"type": "BS",
 		"ack": 5
 	},
 	"sd2": {
@@ -557,8 +557,13 @@
 		"type": "RK",
 		"ack": 5
 	},
-	"hayabusa55": {
-		"name": "爆装一式戦 隼Ⅲ型改(55戦隊)",
+	"hiryuj": {
+		"name": "四式重爆 飛龍(熟練)",
+		"type": "RK",
+		"ack": 5
+	},
+	"hayabusa65": {
+		"name": "爆装一式戦 隼Ⅲ型改(65戦隊)",
 		"type": "RK",
 		"ack": 6
 	},
