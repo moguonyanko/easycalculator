@@ -567,6 +567,11 @@
 		"type": "RK",
 		"ack": 6
 	},
+	"do217hs293": {
+		"name": "Do217 E-5+Hs293初期型",
+		"type": "RK",
+		"ack": 4
+	},
 	"taiteichan": {
 		"name": "二式大艇",
 		"type": "ST",
