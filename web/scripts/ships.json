@@ -331,6 +331,10 @@
 		"name": "能代改",
 		"slotComposition": [2, 2, 2]
 	},
+	"noshirok2": {
+		"name": "能代改二",
+		"slotComposition": [1, 1,  4,  2]
+	},
 	"yahagik": {
 		"name": "矢矧改",
 		"slotComposition": [2, 2, 2]
