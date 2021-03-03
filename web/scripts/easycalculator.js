@@ -711,7 +711,7 @@ const testCalculateMastery = () => {
     testOneCompanyMastery();
 };
 
-testCalculateMastery();
+//testCalculateMastery();
 
 const easycalculator = {
     getShipNames,

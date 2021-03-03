@@ -1,8 +1,10 @@
 /**
  * @fileOverview EasyCalculator用のServiceWorkerスクリプト
+ * オフライン時にこのファイルを取得できなくてもエラーにはならず保存済みの
+ * キャッシュを使ってアプリケーションが動作する。
  */
 
-const VERSION = "0.112";
+const VERSION = "0.11233";
 const CONTEXT_NAME = "easycalculator";
 const APP_ROOT = `/${CONTEXT_NAME}/`;
 const CACHE_KEY = `${CONTEXT_NAME}-${VERSION}`;
@@ -15,7 +17,7 @@ const CACHE_KEY = `${CONTEXT_NAME}-${VERSION}`;
 // スコープを小さくするとユーティリティ関数をまとめたスクリプトのような共有のリソースは
 // 普通スコープ外に配置されているためキャッシュに追加できない。
 // そこでHTTPレスポンスヘッダーservice-worker-allowedで指定したディレクトリ以下に
-// 該当ファイルを配置してキャッシュに追加する。以下のcore.jsがそれに該当する。
+// 該当ファイルを配置してキャッシュに追加する。
 const targetResources = [
     APP_ROOT,
     `${APP_ROOT}index.html`,
@@ -52,8 +54,9 @@ const createErrorPage = ({url, error}) => `
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset='UTF-8' />
+<meta charset="UTF-8" />
 <title>Easy Calculator Error</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
 <header>
@@ -83,13 +86,24 @@ const getErrorResponse = ({url, error}) => {
     return response;
 };
 
+const deleteAllCache = event => {
+    event.waitUntil(caches.keys().then(keys => {
+        return Promise.all(keys.map(key => getDeletePromise(key)));
+    }));
+};
+
+// sw.jsのバージョンを上げるとinstallイベントが発生する。
 self.addEventListener("install", event => {
-    console.log(`Install: ${CONTEXT_NAME}`);
+    console.log(`Install: ${CONTEXT_NAME} v${VERSION}`);
+    // 古いリソースをキャッシュから全て削除する。
+    deleteAllCache(event);
     event.waitUntil(openCaches().then(ch => ch.addAll(targetResources)));
 });
 
 const checkResponse = (request, response) => {
     // CacheStorageにリソースが存在した場合
+    // リソースの有無の判定にCache-Controlヘッダの値は考慮されない。
+    // 即ち削除する処理を自分で記述していないと古いリソースが延々使用される。
     if (response) {
         // ここでエラーを発生させるとEvent.respondWith().catch()のcatchに記述した
         // 内容に基づいてエラー処理が行われる。
@@ -101,8 +115,8 @@ const checkResponse = (request, response) => {
     return fetch(request).then(response => {
         console.log(`Fetch(from server): ${request.url}`);
         // CacheStorage保存対象のリソースだった場合はCacheStorageに保存してから
-        // レスオポンスを返す。
-        if (targetResources.indexOf(request.url) >= 0) {
+        // レスポンスを返す。
+        if (targetResources.includes(request.url)) {
             return openCaches().then(cache => {
                 cache.put(request, response.clone());
                 return response;
@@ -115,7 +129,7 @@ const checkResponse = (request, response) => {
 };
 
 self.addEventListener("fetch", event => {
-    const request = event.request;
+    const { request } = event;
     event.respondWith(caches.match(request)
         .then(response => checkResponse(request, response))
         .catch(error => getErrorResponse({
@@ -128,7 +142,5 @@ self.addEventListener("fetch", event => {
 // 再びregisterされるとactivateイベントが発生する。
 self.addEventListener("activate", event => {
     console.log(`Activate: ${CONTEXT_NAME}`);
-    event.waitUntil(caches.keys().then(keys => {
-        return Promise.all(keys.map(key => getDeletePromise(key)));
-    }));
+    deleteAllCache(event);
 });
