@@ -339,6 +339,14 @@
 		"name": "矢矧改",
 		"slotComposition": [2, 2, 2]
 	},
+	"yahagik2": {
+		"name": "矢矧改二",
+		"slotComposition": [1, 1, 4, 2]
+	},
+	"yahagik2otu": {
+		"name": "矢矧改二乙",
+		"slotComposition": [1, 1, 2, 2]
+	},
 	"sakawak": {
 		"name": "酒匂改",
 		"slotComposition": [2, 2, 2]
