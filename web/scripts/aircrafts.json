@@ -504,6 +504,27 @@
 		"intercept": 3,
 		"antibomb": 3
 	},
+	"zero21tainan": {
+		"name": "零式艦戦21型(台南空)",
+		"type": "KYS",
+		"ack": 11,
+		"intercept": 3,
+		"antibomb": 1
+	},
+	"zero32tainan": {
+		"name": "零式艦戦32型(台南空)",
+		"type": "KYS",
+		"ack": 12,
+		"intercept": 4,
+		"antibomb": 1
+	},
+	"zero22251": {
+		"name": "零式艦戦22型(251空)",
+		"type": "KYS",
+		"ack": 12,
+		"intercept": 3,
+		"antibomb": 1
+	},
 	"siseishusui": {
 		"name": "試製秋水",
 		"type": "ROS",
